@@ -1,11 +1,23 @@
 import React from "react";
-import { Main, ContainerLeft, ContainerRight, HomeIcon } from "./HomePageStyled";
+import {
+  Main,
+  ContainerLeft,
+  TitleLogin,
+  ParagraphLogin,
+  ContainerRight,
+  HomeIcon,
+} from "./HomePageStyled";
 export const HomePage = (): JSX.Element => {
   return (
     <Main>
-      <ContainerLeft></ContainerLeft>
+      <ContainerLeft>
+        <TitleLogin>Olá,</TitleLogin>
+        <ParagraphLogin>
+          Para continuar navegando de forma segura, efetue o login na rede.
+        </ParagraphLogin>
+      </ContainerLeft>
       <ContainerRight>
-        <HomeIcon/>
+        <HomeIcon />
       </ContainerRight>
     </Main>
   );
