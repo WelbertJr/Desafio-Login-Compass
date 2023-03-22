@@ -1,10 +1,11 @@
 import React from "react";
 
-const ComponenteTeste = ({people , name, age}) => {
+const ComponenteTeste = ({people=[]}) => {
+    console.log(people);
     return(
      <div>
-        <p>Nome: {name}</p>
-        <p>Idade: {age}</p>
+        <p>Nome:</p>
+        <p>Idade: </p>
      </div>
     )
 }

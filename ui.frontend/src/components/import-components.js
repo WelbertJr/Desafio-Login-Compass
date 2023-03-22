@@ -20,7 +20,7 @@ import "./Container/Container";
 import "./ExperienceFragment/ExperienceFragment";
 import "./XxXxx";
 import MeuComponente from "./MeuComponente";
-import "./ComponenteTeste";
+import  ComponenteTeste from "./ComponenteTeste";
 
 import { MapTo } from "@adobe/aem-react-editable-components";
 
@@ -122,5 +122,10 @@ const authorAcessibility = { isEmpty: (props) => !props.any };
 
 MapTo("reactapp/components/meu-componente")(MeuComponente, {
   emptyLabel: "Meu Componente",
+  authorAcessibility,
+});
+
+MapTo("reactapp/components/componente-teste")(ComponenteTeste, {
+  emptyLabel: "Componente Teste",
   authorAcessibility,
 });

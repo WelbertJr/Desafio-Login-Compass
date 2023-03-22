@@ -1,0 +1,252 @@
+{
+    "project-settings": {
+        "code-owner": "Compass.UOL", // empresa
+        "bundle-path": "core/src/main/java", // caminho dos pacotes java
+        "test-path": "core/src/test/java", // caminho dos pacotes de testes
+        "apps-path": "ui.apps/src/main/content/jcr_root/apps", // caminho da pasta apps aem
+        "component-path": "newco/components", // caminho onde os componentes serão criados na pasta apps
+        "model-interface-pkg": "com.newco.aem.base.core.models", // pacote java dos models (interfaces sem codigo)
+        "model-impl-pkg": "com.newco.aem.base.core.models.impl" // pacote impl (onde o codigo do model é implementado)
+    },
+    "name": "nome-componente", // nome do componente em kebab-case
+    "title": "Titulo do componente", // titulo do componente
+    "group": "Projeto - Content", // grupo do componente nas policies
+    "type": "content", // tipo da pasta (content, form, structure)
+    "options": {
+        "js": false, // gerar arquivo js nas clientlibs
+        "jstxt": false, // gerar arquivo importando js
+        "css": false, // gerar css nas clientlibs
+        "csstxt": false, // gerar arquivo importando css
+        "html": false,  // gerar html do componente
+        "html-content": false, // colocar as props no html
+        "slingmodel": true, // gerar java no formato sling model (recomendado)
+        "testclass": true, // gerar testes para o java
+        "junit-major-version": 5, // versao da biblioteca de testes
+        "content-exporter": true, // exportar props para json (necessario para AEM React)
+        "model-adaptables": ["request"], // adaptadores do model (request, resource)
+        "generic-javadoc": false, // gerar comentarios genericos no java
+        // TABS DO COMPONENTE (opcional), referenciar o nome dos props
+        "properties-tabs": [
+            {
+                "id": "tab-1", // id da tab
+                "label": "Tab 1", // tiulo da tab
+                // coloque aqui os nomes dos props que devem aparecer na tab
+                "fields": [
+                    "textfieldTest",
+                    "checkTest",
+                    "pathfieldTest",
+                    "pagefieldTest",
+                    "tagfieldTest",
+                    "textareaTest",
+                    "dateTest",
+                    "selectTest",
+                    "radioTest",
+                    "hiddenTest",
+                    "numberfieldTest"
+                ]
+            },
+            // adicione mais tabs assim
+            {
+                "id": "tab-2",
+                "label": "Tab 2",
+                "fields": [
+                    "imageTest",
+                    "headingTest",
+                    "colors",
+                    "links"
+                ]
+            }
+        ],
+        // PROPS DO COMPONENTE
+        "properties": [
+            {
+                "field": "textfieldTest", // nome da PROP
+                "description": "Adds a fieldDescription tooltip", // descricao do campo (opcional)
+                "javadoc": "Returns a text value tooltip used somewhere in the component", // Comentario para o java (opcional)
+                "type": "textfield", // TIPO DO CAMPO, (textfield é um campo de texto de 1 linha)
+                "label": "Textfield Test", // Titulo do campo
+                "json-expose": true, // exportar campo para json (necessario para AEM React)
+                "attributes": {} // algums campos podem ter atributos (opcional)
+            },
+            {
+                "field": "checkTest",
+                "type": "checkbox", // tipo checkbox (true/false)
+                "json-expose": true,
+                "attributes": {
+                    "value": "{Boolean}true", // use {Boolean}true para campos booleanos
+                    "text": "Checkbox Test" // texto do checkbox
+                }
+            },
+            {
+                "field": "pathfieldTest",
+                "type": "pathfield", // tipo pathfield (caminho do aem, ex: /content)
+                "label": "Pathfield Test",
+                "json-expose": true,
+                "attributes": {
+                    "rootPath": "/content" // caminho raiz
+                }
+            },
+            {
+                "field": "pagefieldTest",
+                "type": "pagefield", // tipo pagefield (caminho de uma pagina do aem, ex: /content/newco/home)
+                "label": "Pagefield Test",
+                "json-expose": true,
+                "attributes": {
+                    "rootPath": "/content" // caminho raiz ex: content/newco
+                }
+            },
+            {
+                "field": "tagfieldTest",
+                "type": "tagfield", // campo para tags do aem
+                "label": "Tags Test",
+                "json-expose": true,
+                "attributes": {
+                    "multiple": "{Boolean}true" // permite mais que uma tag
+                }
+            },
+            {
+                "field": "textareaTest",
+                "type": "textarea", // tipo textarea (campo de texto de varias linhas)
+                "label": "Textarea Test",
+                "json-expose": true,
+                "attributes": {}
+            },
+            {
+                "field": "dateTest",
+                "description": "Context tooltip for authors.",
+                "type": "datepicker", // tipo datepicker (calendario com data e hora)
+                "json-expose": true,
+                "label": "Select Date",
+                "attributes": {
+                    "displayedFormat": "MM/DD/YYYY" // formato da data
+                }
+            },
+            {
+                "field": "selectTest",
+                "type": "select", // tipo select (campo de selecao)
+                "label": "Select Test",
+                "json-property": "selection",
+                "json-expose": true,
+                "attributes": {
+                    "defaultValue": "opt1", // valor padrao
+                    "value": "opt1" // valor padrao
+                },
+                // Campos complexos podem ter subprops
+                "items": [
+                    {
+                        "field": "option1", // nome da subprop
+                        "attributes": {
+                            "selected": "true", // se esta selecionado
+                            "text": "Option 1", // texto do campo
+                            "value": "opt1" // valor do campo
+                        }
+                    },
+                    {
+                        "field": "option2",
+                        "attributes": {
+                            "text": "Option 2",
+                            "value": "opt2"
+                        }
+                    }
+                ]
+            },
+            {
+                "field": "radioTest",
+                "type": "radiogroup", // tipo radio (campo de selecao com apenas uma opcao)
+                "label": "Radio Test",
+                "json-expose": true,
+                "attributes": {
+                    "vertical": "{Boolean}false" // se o radio deve ser vertical
+                },
+                "items": [
+                    {
+                        "field": "radio1",
+                        "type": "radio",
+                        "attributes": {
+                            "checked": "{Boolean}true",
+                            "name": "radioTest",
+                            "text": "Radio 1",
+                            "value": "rad1"
+                        }
+                    },
+                    {
+                        "field": "radio2",
+                        "type": "radio",
+                        "attributes": {
+                            "checked": "{Boolean}true",
+                            "name": "radioTest",
+                            "text": "Radio 2",
+                            "value": "rad2"
+                        }
+                    }
+                ]
+            },
+            {
+                "field": "hiddenTest",
+                "type": "hidden", // campo oculto (nao aparece no dialog)
+                "attributes": {
+                    "value": "hidden value" // valor que este campo vai guardar no crxde
+                }
+            },
+            {
+                "field": "numberfieldTest",
+                "type": "numberfield", // campo para numeros
+                "label": "Numberfield Test",
+                "json-expose": true,
+                "attributes": {
+                    "max": "{Double}20",
+                    "min": "{Double}0",
+                    "step": "1", // quantos numeros o campo vai aumentar a cada clique
+                    "value": "{Long}20" // valor inicial
+                }
+            },
+            {
+                "field": "imageTest",
+                "type": "image",  // campo seletor de imagem (necessita dependencia acs-commons)
+                "label": "Image Test",
+                "json-expose": true
+            },
+            {
+                "field": "headingTest",
+                "type": "heading", // Um titulo
+                "label": "Heading Test"
+            },
+
+            // TIPO MULTIFIELD (campo que pode adicionar multiplos valores)
+            {
+                "field": "links",
+                "type": "multifield", // multifield
+                // multifields criam um array de objetos, este objeto necessita de uma interface java
+                // para que possa ser processado no backend, model-name é o nome da interface que define os valores
+                // desse objeto.
+                "model-name": "DemoLink",
+                "use-existing-model": false, // se este multifield deve usar uma interface já existente ou criar uma nova
+                "label": "Links",
+                "json-expose": true,
+                // Campos do multifield
+                "items": [
+                    {
+                        "field": "path",
+                        "type": "pathfield",
+                        "label": "Path",
+                        "description": "Path to the page",
+                        "json-expose": true // estes campos tambem precisam ser json-expose
+                    },
+                    {
+                        "field": "label",
+                        "type": "textfield",
+                        "label": "Label",
+                        "description": "Label to display on the link",
+                        "json-expose": true
+                    },
+                    {
+                        "field": "linkIcon",
+                        "type": "image",
+                        "label": "Link Icon",
+                        "json-expose": true
+                    }
+                ]
+            }
+        ],
+    }
+}
