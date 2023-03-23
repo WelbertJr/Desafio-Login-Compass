@@ -88,7 +88,6 @@ export const HomePage: FunctionComponent = () => {
               />
               {error && <ErrorMessage>{error}</ErrorMessage>}
             </ContainerPassword>
-            <button type='submit' />
           </Form>
         </SubContainerLeft>
       </ContainerLeft>
