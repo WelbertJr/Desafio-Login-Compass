@@ -19,6 +19,7 @@ import {
 import { Input } from "../Inputs/Input";
 import { ErrorMessage } from "../Inputs/InputStyled";
 import { ContainerPassword } from "../Inputs/InputStyled";
+import { Button } from '../Buttons/Buttons';
 import { useHistory } from "react-router-dom";
 
 export const HomePage: FunctionComponent = () => {
@@ -88,6 +89,7 @@ export const HomePage: FunctionComponent = () => {
               />
               {error && <ErrorMessage>{error}</ErrorMessage>}
             </ContainerPassword>
+            <Button type="submit" name="Continuar" />
           </Form>
         </SubContainerLeft>
       </ContainerLeft>
