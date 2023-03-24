@@ -1,60 +1,75 @@
 import { FunctionComponent } from "react";
 import { Header } from "./components/Header/Header";
 import { Paragraph } from "./micros/Paragraph/Paragraph";
-import { SuccessBody, SuccessContainer, SuccessImage } from "./SuccessStyled";
+import {
+  SuccessMain,
+  SuccessText,
+  SuccessContainer,
+  SuccessImage,
+} from "./SuccessStyled";
 import { Footer } from "./components/Footer/Footer";
 import React from "react";
 
 export const Success: FunctionComponent = () => {
   return (
-    <>
+    <SuccessContainer>
       <Header />
-      <SuccessBody>
+      <SuccessMain>
         <SuccessImage />
-        <SuccessContainer>
+        <SuccessText>
           <Paragraph
-            fontSize='2vw'
+            fontSize='2.8rem'
             color=' #c12d18'
             text='Our mission is'
+            padding-bottom='0.3rem'
+            fontWeight='700'
           ></Paragraph>
           <Paragraph
-            fontSize='1vw'
+            fontSize='2rem'
             color=' #222222'
             text='Nossa missão é'
+            fontWeight='400'
           ></Paragraph>
           <Paragraph
-            fontSize='3.52rem'
+            fontSize='5rem'
             color=' #c12d18'
             text='to transform the world'
+            padding-bottom='0.8rem'
+            fontWeight='700'
           ></Paragraph>
           <Paragraph
-            fontSize='1vw'
+            fontSize='2rem'
             color=' #222222'
             text='transformar o mundo'
+            fontWeight='400'
           ></Paragraph>
           <Paragraph
-            fontSize='2.2rem'
+            fontSize='5rem'
             color=' #c12d18'
             text='building digital experiences'
+            fontWeight='700'
           ></Paragraph>
           <Paragraph
-            fontSize='1vw'
+            fontSize='2rem'
             color=' #222222'
             text='construindo experiências digitais'
+            fontWeight='400'
           ></Paragraph>
           <Paragraph
-            fontSize='2.2rem'
+            fontSize='5rem'
             color=' #c12d18'
             text='that enable our clients growth'
+            fontWeight='700'
           ></Paragraph>
           <Paragraph
-            fontSize='1vw'
+            fontSize='2rem'
             color=' #222222'
             text='que permitam o crescimento dos nossos clientes'
+            fontWeight='400'
           ></Paragraph>
-        </SuccessContainer>
-      </SuccessBody>
+        </SuccessText>
+      </SuccessMain>
       <Footer />
-    </>
+    </SuccessContainer>
   );
 };

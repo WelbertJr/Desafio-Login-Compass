@@ -9,9 +9,7 @@ export const ButtonStyled = styled.button`
   font-family: "Poppins";
   color: white;
   font-style: Bold;
-  font-size: 18px;
-  line-height: 27px;
-  line-height: 100%;
+  font-size: 1.2rem;
   margin-top: 10%;
   @media (max-width: 768px) {
     margin-top: 5%;
@@ -19,28 +17,29 @@ export const ButtonStyled = styled.button`
   &:hover {
     background-color: #f22e07;
     cursor: pointer;
+    font-size: 1.6rem;
   }
 `;
-export const GitHubButton = styled(ButtonStyled)`
-  width: 20%;
-  height: 4.5vh;
-  margin-top: 0;
-`;
+
 export const ButtonWrapper = styled.button`
   display: flex;
-  flex-direction: column;
   background: #ffffff;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   color: #c13216;
-  width: 12.8rem;
-  text-align: center;
-  justify-content: center;
+  width: 50%;
   align-items: center;
+  justify-content: center;
   border: none;
-  font-family: Poppins;
+  font-family: "Poppins";
   &:hover {
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 1.9rem;
+    @media (max-height: 720px) {
+      font-size: 1.4rem;
+    }
+    @media (max-width: 1150px) {
+      font-size: 1.4rem;
+    }
   }
   &.logout {
     background: linear-gradient(90.16deg, #33383d 0%, #1c1d20 100%);
@@ -49,6 +48,12 @@ export const ButtonWrapper = styled.button`
     grid-row: 1/3;
     text-align: center;
     justify-content: center;
+  }
+  @media (max-height: 720px) {
+    font-size: 1.2rem;
+  }
+  @media (max-width: 1150px) {
+    font-size: 1.2rem;
   }
   @media (max-width: 768px) {
     width: 100%;

@@ -1,28 +1,19 @@
 import styled from "styled-components";
-export const HeaderBody = styled.div`
+export const HeaderBody = styled.header`
   display: flex;
   justify-content: space-between;
-  font-family: Poppins;
-  height: 12.5vh;
+  font-family: "Poppins";
+  height: 18.4rem;
   align-items: flex-start;
-  padding-top: 2.5vh;
+  padding: 0 2% 0 2%;
 `;
 export const HeaderImage = styled.img`
-  min-width: 24.8rem;
+  width: 24.8rem;
   height: 8.4rem;
-`;
-export const HeaderBodyTime = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  #headerBodyTimeText {
-    font-size: 5rem;
-    font-weight: 700;
-    line-height: 5rem;
-  }
-  @media (max-width: 768px) {
-    display: none;
+  padding-top: 1.9rem;
+  @media (max-width: 478px) {
+    width: 40%;
+    height: 8.4rem;
   }
 `;
 
@@ -30,8 +21,4 @@ export const HeaderBodyWeather = styled.div`
   display: flex;
   flex-direction: column;
   text-align: right;
-  margin-right: 4vh;
-  @media (max-width: 768px) {
-    margin-right: 2vh;
-  }
 `;

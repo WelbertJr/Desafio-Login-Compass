@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FooterBody = styled.div`
+export const FooterBody = styled.footer`
   display: flex;
   font-family: Poppins;
   width: 100%;
@@ -19,7 +19,7 @@ export const FooterBody = styled.div`
     justify-content: space-between;
   }
 `;
-export const FooterP = styled.p`
+export const FooterP = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,6 +30,7 @@ export const FooterP = styled.p`
   font-size: 0.8vw;
   line-height: 1rem;
   margin-right: 2rem;
+  row-gap: 1rem;
   @media (max-width: 768px) {
     display: none;
   }
@@ -45,10 +46,10 @@ export const FooterTimer = styled.div`
     display: none;
   }
 `;
-export const Refresh = styled.p`
+export const Refresh = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 14px;
+  font-size: 1.4rem;
   @media (max-width: 768px) {
     display: none;
   }
@@ -70,6 +71,7 @@ export const FooterButtons = styled.div`
   display: flex;
   flex-direction: row;
   height: 100%;
+  width: 26.2rem;
   @media (max-width: 768px) {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;

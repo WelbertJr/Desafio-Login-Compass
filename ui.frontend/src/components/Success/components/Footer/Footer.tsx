@@ -5,7 +5,7 @@ import {
   Refresh,
   FooterButtons,
 } from "./FooterStyled";
-import { Button } from "../../../Buttons/Buttons";
+import { Button } from "../../../HomePage/Buttons/Buttons";
 import { useHistory } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import { Timer } from "../Timer/Timer";
@@ -26,8 +26,8 @@ export function Footer() {
     timeout.current = setTimeout(() => {
       setTime((t) => t - 1);
     }, 1000);
-    if (time <= 0) {
-      history.push("/");
+    if (time === 0) {
+      history.push("/content/reactapp/us/en/home.html");
     }
   }, [time, history]);
   return (
@@ -53,7 +53,7 @@ export function Footer() {
       <FooterButtons>
         <Button
           className='nav'
-          name='Acessar Busca'
+          text="Acessar Busca"
           onClick={() => {
             history.push("/content/reactapp/us/en/search-page.html");
           }}
@@ -61,7 +61,7 @@ export function Footer() {
         />
         <Button
           className='logout'
-          name='Logout'
+          text='Logout'
           onClick={() => {
             removeLocalStorageData("userName", "userPassword");
             history.push("/content/reactapp/us/en/home.html");
