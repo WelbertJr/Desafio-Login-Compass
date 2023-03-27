@@ -28,6 +28,7 @@ const LoginPage: FunctionComponent = () => {
   const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const [isFormValid, setIsFormValid] = useState<boolean>(true);
   let history = useHistory();
   useEffect(() => {
     if (
@@ -52,8 +53,10 @@ const LoginPage: FunctionComponent = () => {
     event.preventDefault();
     if (name !== "admin" || password !== "admin") {
       setError("Ops, usuário ou senha inválidos. Tente novamente!");
+      setIsFormValid(false);
       return;
     }
+    setIsFormValid(true);
     localStorage.setItem("userName", name);
     localStorage.setItem("userPassword", password);
     history.push("/content/reactapp/us/en/success-page.html");
@@ -79,6 +82,7 @@ const LoginPage: FunctionComponent = () => {
                 placeholder='Usuário'
                 value={name}
                 label='Login'
+                isFormValid={isFormValid}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                   setName(event.target.value)
                 }
@@ -88,6 +92,7 @@ const LoginPage: FunctionComponent = () => {
                   type='password'
                   placeholder='Senha'
                   value={password}
+                  isFormValid={isFormValid}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                     setPassword(event.target.value)
                   }
@@ -122,6 +127,7 @@ const LoginPage: FunctionComponent = () => {
                 type='text'
                 placeholder='Usuário'
                 value={name}
+                isFormValid={isFormValid}
                 label='Login'
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                   setName(event.target.value)
@@ -132,6 +138,7 @@ const LoginPage: FunctionComponent = () => {
                   type='password'
                   placeholder='Senha'
                   value={password}
+                  isFormValid={isFormValid}
                   onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                     setPassword(event.target.value)
                   }

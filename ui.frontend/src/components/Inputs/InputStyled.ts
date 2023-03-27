@@ -2,13 +2,17 @@ import styled from "styled-components";
 import userSvg from "../../assets/user.svg";
 import lockSvg from "../../assets/icon-password.svg";
 
+interface InputErrorProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  isFormValid?: boolean;
+}
+
 export const Label = styled.label`
   font-family: "Poppins";
   font-weight: 400;
   font-size: 3rem;
   color: #e0e0e0;
 `;
-export const InputUser = styled.input`
+export const InputUser = styled.input<InputErrorProps>`
   width: 100%;
   height: 6rem;
   font-family: "Poppins";
@@ -26,10 +30,8 @@ export const InputUser = styled.input`
   background-position: 100%;
   background-size: contain;
   margin-top: 5%;
-
-  &.invalid {
-    border: 1px solid #e9b425;
-  }
+  border: ${({ isFormValid }) =>
+    isFormValid ? "1px solid #FFFFFF;" : "1px solid #E9B425"};
 
   &::placeholder {
     font-family: "Poppins";

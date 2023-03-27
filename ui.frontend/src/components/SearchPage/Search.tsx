@@ -8,16 +8,21 @@ import {
   ContainerSearchPage,
   ContainerImage,
   ContainerInputButtonSearch,
-  HeaderSearchPage,
+  SearchUsers,
   ParagraphSearch,
   TitleSearch,
+  CardUser,
+  UserImage,
+  UserName,
+  UserDescription,
+  UserNameDescription,
 } from "./SearchStyled";
 export const SearchPage = () => {
   let history = useHistory();
   return (
     <ContainerSearchPage>
       <ContainerSearch width='70%'>
-        <HeaderSearchPage>
+        <SearchUsers>
           <TitleSearch>Busca</TitleSearch>
           <ParagraphSearch>
             Para encontrar o usuário desejado digite seu nome abaixo.
@@ -26,7 +31,16 @@ export const SearchPage = () => {
             <InputSearch type='text' placeholder='Ex.: Thauany' />
             <Button type='button' text='Buscar' />
           </ContainerInputButtonSearch>
-        </HeaderSearchPage>
+          <CardUser>
+            <UserImage />
+            <UserNameDescription>
+              <UserName>Nome</UserName>
+              <UserDescription>Description</UserDescription>
+            </UserNameDescription>
+          </CardUser>
+          <CardUser></CardUser>
+          <CardUser></CardUser>
+        </SearchUsers>
       </ContainerSearch>
       <ContainerImage width='30%'>
         <HomeIcon />

@@ -7,6 +7,7 @@ interface InputProps {
   placeholder: string;
   value?: string;
   label?: string;
+  isFormValid?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export const Input: FunctionComponent<InputProps> = ({
@@ -14,6 +15,7 @@ export const Input: FunctionComponent<InputProps> = ({
   placeholder,
   label,
   value,
+  isFormValid,
   onChange,
 }): any => {
   if (placeholder === "Usuário")
@@ -25,6 +27,7 @@ export const Input: FunctionComponent<InputProps> = ({
           placeholder={placeholder}
           autoComplete='true'
           value={value}
+          isFormValid={isFormValid}
           onChange={onChange}
         />
       </>
@@ -36,6 +39,7 @@ export const Input: FunctionComponent<InputProps> = ({
         placeholder={placeholder}
         autoComplete='true'
         value={value}
+        isFormValid={isFormValid}
         onChange={onChange}
       />
     );
