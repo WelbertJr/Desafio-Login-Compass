@@ -37,6 +37,7 @@ export const SearchPage = () => {
               <UserName>Nome</UserName>
               <UserDescription>Description</UserDescription>
             </UserNameDescription>
+            <Button type='button' text='VER MAIS' />
           </CardUser>
           <CardUser></CardUser>
           <CardUser></CardUser>

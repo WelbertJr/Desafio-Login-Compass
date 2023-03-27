@@ -71,6 +71,14 @@ export const UserImage = styled.img`
   height: 9.3rem;
   border-radius: 50%;
   background-image: url(${Elipse});
+  @media (max-width: 622px) {
+    width: 8.3rem;
+    height: 8.3rem;
+  }
+  @media (max-width: 550px) {
+    width: 6.3rem;
+    height: 6.3rem;
+  }
 `;
 
 export const UserNameDescription = styled.div`
@@ -80,6 +88,12 @@ export const UserNameDescription = styled.div`
   align-items: flex-start;
   text-align: justify;
   margin: 5%;
+  @media (max-width: 720px) {
+    width: 40%;
+  }
+  @media (max-width: 650px) {
+    width: 20%;
+  }
 `;
 
 export const UserName = styled.h2`
@@ -87,6 +101,12 @@ export const UserName = styled.h2`
   font-weight: 400;
   font-size: 2.4rem;
   color: #ffffff;
+  @media (max-width: 550px) {
+    font-size: 1.8rem;
+  }
+  @media (max-width: 440px) {
+    font-size: 1.4rem;
+  }
 `;
 
 export const UserDescription = styled.p`
@@ -94,4 +114,10 @@ export const UserDescription = styled.p`
   font-weight: 400;
   font-size: 1.6rem;
   color: #8d8d8d;
+  @media (max-width: 550px) {
+    font-size: 1.2rem;
+  }
+  @media (max-width: 440px) {
+    font-size: 1rem;
+  }
 `;

@@ -160,3 +160,43 @@ export const ContainerIcons = styled.span`
     flex-direction: center;
   }
 `;
+
+export const ViewMoreButton = styled.button`
+  width: 15%;
+  height: 4.7rem;
+  background: linear-gradient(90deg, #0487ff 0%, #1665c1 100%);
+  box-shadow: inset 0.5rem 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+  border-radius: 0.8rem;
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #ffffff;
+  border: none;
+  &:hover {
+    cursor: pointer;
+    font-size: 1.7rem;
+    @media (max-width: 900px) {
+      font-size: 1.5rem;
+    }
+    @media (max-width: 720px) {
+      margin-left: 20%;
+      font-size: 1.2rem;
+    }
+  }
+  @media (max-width: 900px) {
+    font-size: 1.4rem;
+  }
+  @media (max-width: 720px) {
+    width: 25%;
+    margin-left: 10%;
+    font-size: 1rem;
+  }
+  @media (max-width: 650px) {
+    width: 35%;
+    margin-left: 20%;
+  }
+  @media (max-width: 440px) {
+    width: 45%;
+    margin-left: 10%;
+  }
+`;

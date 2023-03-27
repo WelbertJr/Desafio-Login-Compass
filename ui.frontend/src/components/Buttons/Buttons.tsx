@@ -7,6 +7,7 @@ import {
   ButtonStyled,
   ButtonWrapper,
   ContainerIcons,
+  ViewMoreButton,
 } from "./ButtonsStyled";
 import { BiSearch } from "react-icons/bi";
 interface ButtonProps {
@@ -45,13 +46,14 @@ export const Button: FunctionComponent<ButtonProps> = ({
         {text}
       </ButtonRemoveStorage>
     );
-  } else if (text === "Voltar para página inicial") {
+  }
+  if (text === "Voltar para página inicial") {
     return (
       <ButtonError type={type} onClick={onClick}>
         {text}
       </ButtonError>
     );
-  } else {
+  } else if (text === "Buscar") {
     return (
       <ButtonSearch type={type} onClick={onClick}>
         {text}
@@ -59,6 +61,12 @@ export const Button: FunctionComponent<ButtonProps> = ({
           <BiSearch color={"white"} size={"3rem"} />
         </ContainerIcons>
       </ButtonSearch>
+    );
+  } else {
+    return (
+      <ViewMoreButton type={type} onClick={onClick}>
+        {text}
+      </ViewMoreButton>
     );
   }
 };
