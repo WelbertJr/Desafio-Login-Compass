@@ -1,17 +1,13 @@
 import React from "react";
 import { FunctionComponent } from "react";
-import {
-  InputUser,
-  Label,
-  InputPassword,
-} from "./InputStyled";
+import { InputUser, Label, InputPassword, InputSearch } from "./InputStyled";
 
 interface InputProps {
   type: string;
   placeholder: string;
-  value: string;
+  value?: string;
   label?: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export const Input: FunctionComponent<InputProps> = ({
   type,
@@ -35,12 +31,23 @@ export const Input: FunctionComponent<InputProps> = ({
     );
   else if (placeholder === "Senha")
     return (
-        <InputPassword
-          type={type}
-          placeholder={placeholder}
-          autoComplete='true'
-          value={value}
-          onChange={onChange}
-        />
+      <InputPassword
+        type={type}
+        placeholder={placeholder}
+        autoComplete='true'
+        value={value}
+        onChange={onChange}
+      />
     );
+  else {
+    return (
+      <InputSearch
+        type={type}
+        placeholder={placeholder}
+        autoComplete='true'
+        value={value}
+        onChange={onChange}
+      />
+    );
+  }
 };

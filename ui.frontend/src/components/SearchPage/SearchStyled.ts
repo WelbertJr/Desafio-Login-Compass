@@ -16,7 +16,7 @@ export const HeaderSearchPage = styled.header`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin: 10.1% 10.9% 7.4% 28.7%;
+  margin: 5% 5.9% 7.4% 10.7%;
 `;
 
 export const TitleSearch = styled.h1`
@@ -31,6 +31,6 @@ export const ParagraphSearch = styled.p`
   font-family: "Poppins";
   font-weight: 400;
   font-size: 1.6rem;
-  margin-bottom: 4.7rem;
+  margin-bottom: 5.4rem;
   color: #e0e0e0;
 `;

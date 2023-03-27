@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { InputSearch } from "../Inputs/InputStyled";
 import { ContainerRight, HomeIcon } from "../LoginPage/LoginPageStyled";
 import {
   ContainerSearch,
@@ -14,10 +15,11 @@ export const SearchPage = () => {
     <ContainerSearchPage>
       <ContainerSearch width='70%'>
         <HeaderSearchPage>
-          <TitleSearch>Buscar</TitleSearch>
+          <TitleSearch>Busca</TitleSearch>
           <ParagraphSearch>
             Para encontrar o usuário desejado digite seu nome abaixo.
           </ParagraphSearch>
+          <InputSearch type='text' placeholder='Ex.: Thauany' />
         </HeaderSearchPage>
       </ContainerSearch>
       <ContainerRight width='30%'>
