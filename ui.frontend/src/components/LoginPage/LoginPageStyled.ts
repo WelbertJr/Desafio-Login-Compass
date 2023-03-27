@@ -78,6 +78,7 @@ export const Form = styled.form`
 
 export const ContainerRight = styled(Container)`
   padding: 1.9rem 0 0 0;
+  width: ${({ width }) => width};
   background: url(${imgNotebook});
   background-repeat: no-repeat;
   justify-content: center;
