@@ -107,3 +107,56 @@ export const ButtonError = styled.button`
     font-size: 1.2rem;
   }
 `;
+
+export const ButtonSearch = styled.button`
+  width: 20%;
+  margin-left: 4.1%;
+  min-height: 6.7rem;
+  border: none;
+  display: flex;
+  justify-content: space-evenly;
+  color: #ffffff;
+  align-items: center;
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 1.8rem;
+  background: #cf2e0e;
+  box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 50px;
+  cursor: pointer;
+  filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
+
+  &:hover {
+    background-color: #f22e07;
+    cursor: pointer;
+    font-size: 2rem;
+    @media (max-width: 1320px) {
+      font-size: 1.8rem;
+    }
+    @media (max-width: 960px) {
+      font-size: 1.4rem;
+    }
+  }
+
+  @media (max-width: 1320px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 960px) {
+    font-size: 1.2rem;
+  }
+  @media (max-width: 768px) {
+    width: 7.7rem;
+    height: 6.7rem;
+    font-size: 0;
+  }
+`;
+
+export const ContainerIcons = styled.span`
+  width: max-content;
+  display: flex;
+  @media (max-width: 768px) {
+    width: 60%;
+    align-items: center;
+    flex-direction: center;
+  }
+`;
