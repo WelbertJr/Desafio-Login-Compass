@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 interface ContainerProps {
-    width: string;
-  }
-  
+  width: string;
+}
+
 export const Container = styled.div<ContainerProps>`
   display: flex;
   justify-content: center;

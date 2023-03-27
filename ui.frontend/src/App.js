@@ -1,6 +1,7 @@
 import { Page, withModel } from "@adobe/aem-react-editable-components";
 import React from "react";
-import { ErrorPage404 } from "./components/ErrorPages/ErrorPage404/ErrorPage404";
+import { SearchPage } from "./components/SearchPage/Search";
+//import { ErrorPage404 } from "./components/ErrorPages/ErrorPage404/ErrorPage404";
 //import { ErrorPage401 } from "./components/ErrorPages/ErrorPage401/ErrorPage401";
 //import { LoginPage } from "./components/LoginPage/LoginPage";
 //import { HomePage } from "./components/HomePage/HomePage";
@@ -12,7 +13,7 @@ class App extends Page {
       <div>
         {this.childComponents}
         {this.childPages}
-        <ErrorPage404 />
+        <SearchPage />
       </div>
     );
   }
