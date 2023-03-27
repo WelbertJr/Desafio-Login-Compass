@@ -19,9 +19,10 @@ import "./Page/Page";
 import "./Container/Container";
 import "./ExperienceFragment/ExperienceFragment";
 import "./XxXxx";
+import LoginPage from "./LoginPage/LoginPage";
+import SuccessPage from "./Success/SuccessPage";
 import MeuComponente from "./MeuComponente";
-import  ComponenteTeste from "./ComponenteTeste";
-
+import ComponenteTeste from "./ComponenteTeste";
 import { MapTo } from "@adobe/aem-react-editable-components";
 
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
@@ -63,12 +64,12 @@ const LazyTextComponent = withAsyncImport(() => import(`./Text/Text`));
 const TitleV2 = withAsyncImport(() =>
   import(
     `@adobe/aem-core-components-react-base/dist/authoring/title/v2/TitleV2`
-  ),
+  )
 );
 const CarouselV1 = withAsyncImport(() =>
   import(
     `@adobe/aem-core-components-react-spa/dist/container/carousel/v1/CarouselV1`
-  ),
+  )
 );
 
 MapTo("reactapp/components/download")(DownloadV1, {
@@ -127,5 +128,15 @@ MapTo("reactapp/components/meu-componente")(MeuComponente, {
 
 MapTo("reactapp/components/componente-teste")(ComponenteTeste, {
   emptyLabel: "Componente Teste",
+  authorAcessibility,
+});
+
+MapTo("reactapp/components/login-page")(LoginPage, {
+  emptyLabel: "Login Page",
+  authorAcessibility,
+});
+
+MapTo("reactapp/components/success-page")(SuccessPage, {
+  emptyLabel: "Success Page",
   authorAcessibility,
 });

@@ -19,6 +19,7 @@ export const FooterBody = styled.footer`
     justify-content: space-between;
   }
 `;
+
 export const FooterP = styled.div`
   display: flex;
   flex-direction: column;
@@ -46,6 +47,7 @@ export const FooterTimer = styled.div`
     display: none;
   }
 `;
+
 export const Refresh = styled.div`
   display: flex;
   flex-direction: column;

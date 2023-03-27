@@ -5,7 +5,7 @@ export const SuccessContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  height: 937px;
 `;
 export const SuccessMain = styled.main`
   display: flex;

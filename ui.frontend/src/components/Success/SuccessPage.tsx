@@ -10,7 +10,7 @@ import {
 import { Footer } from "./components/Footer/Footer";
 import React from "react";
 
-export const Success: FunctionComponent = () => {
+const SuccessPage: FunctionComponent = () => {
   return (
     <SuccessContainer>
       <Header />
@@ -73,3 +73,5 @@ export const Success: FunctionComponent = () => {
     </SuccessContainer>
   );
 };
+
+export default SuccessPage;

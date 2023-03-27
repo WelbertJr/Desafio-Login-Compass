@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import imgNotebook from "../../assets/img-notebook.png";
 import logoLogin from "../../assets/compassuol-logo-login.png";
+import { Container } from "./Components/ContainerGray/ContainerGrayStyled";
+
 export const Main = styled.div`
   display: flex;
   justify-content: center;
@@ -10,19 +12,7 @@ export const Main = styled.div`
     align-items: flex-start;
   }
 `;
-export const ContainerLeft = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  height: 937px;
-  background: linear-gradient(180deg, #33383d 0%, #1c1d20 100%);
-  @media (max-width: 768px) {
-    width: 100%;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-`;
+
 export const ContainerIcon = styled.div`
   display: none;
   @media (max-width: 768px) {
@@ -46,6 +36,7 @@ export const Icon = styled.div`
     background-repeat: no-repeat;
   }
 `;
+
 export const SubContainerLeft = styled.div`
   padding: 1.5rem;
   display: flex;
@@ -84,7 +75,8 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
 `;
-export const ContainerRight = styled(ContainerLeft)`
+
+export const ContainerRight = styled(Container)`
   padding: 1.9rem 0 0 0;
   background: url(${imgNotebook});
   background-repeat: no-repeat;

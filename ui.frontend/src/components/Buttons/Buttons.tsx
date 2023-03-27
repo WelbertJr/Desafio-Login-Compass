@@ -1,6 +1,11 @@
 import React from "react";
 import { FunctionComponent } from "react";
-import { ButtonStyled, ButtonWrapper } from "./ButtonsStyled";
+import {
+  ButtonError,
+  ButtonRemoveStorage,
+  ButtonStyled,
+  ButtonWrapper,
+} from "./ButtonsStyled";
 interface ButtonProps {
   text: string;
   className?: string;
@@ -16,17 +21,31 @@ export const Button: FunctionComponent<ButtonProps> = ({
 }) => {
   if (text === "Continuar") {
     return <ButtonStyled type={type}>{text}</ButtonStyled>;
-  } else if (text === "Acessar  Busca") {
+  }
+  if (text === "Acessar Busca") {
     return (
       <ButtonWrapper className={className} type={type} onClick={onClick}>
         {text}
       </ButtonWrapper>
     );
-  } else {
+  }
+  if (text === "Logout") {
     return (
       <ButtonWrapper className={className} type={type} onClick={onClick}>
         {text}
       </ButtonWrapper>
+    );
+  } else if (text === "Deslogar") {
+    return (
+      <ButtonRemoveStorage type={type} onClick={onClick}>
+        {text}
+      </ButtonRemoveStorage>
+    );
+  } else {
+    return (
+      <ButtonError type={type} onClick={onClick}>
+        {text}
+      </ButtonError>
     );
   }
 };
