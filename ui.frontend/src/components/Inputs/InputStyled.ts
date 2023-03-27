@@ -69,3 +69,16 @@ export const ErrorMessage = styled.span`
     font-size: 1.4rem;
   }
 `;
+
+export const InputSearch = styled.input`
+  width: 75%;
+  min-height: 6rem;
+  background: #26292c;
+  border: 1px solid #ffffff;
+  border-radius: 5rem;
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 1.6rem;
+  padding-left: 6%;
+  color: #e0e0e0;
+`;
