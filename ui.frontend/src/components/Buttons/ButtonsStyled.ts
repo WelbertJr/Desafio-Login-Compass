@@ -200,3 +200,149 @@ export const ViewMoreButton = styled.button`
     margin-left: 10%;
   }
 `;
+
+export const TopSearchButtons = styled.button`
+  background-color: rgba(42, 42, 42, 1);
+  height: 5.5rem;
+  width: 17rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10%;
+  padding: 1% 2%;
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 1.8rem;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  #div {
+    display: flex;
+    justify-content: space-between;
+  }
+  &.activeRepositoryButton {
+    font-weight: 500;
+    font-size: 1.9rem;
+    @media (max-width: 940px) {
+      font-size: 1.5rem;
+    }
+  }
+  &.activeFavoritesButton {
+    font-weight: 500;
+    font-size: 1.9rem;
+    @media (max-width: 940px) {
+      font-size: 1.5rem;
+    }
+  }
+  @media (max-width: 940px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 768px) {
+    width: 13.5rem;
+    height: 4.7rem;
+  }
+`;
+
+export const FrameButtonsTopSearch = styled.span`
+  width: 3.2rem;
+  height: 2.5rem;
+  padding: 0.4rem;
+  background: #454545;
+  border-radius: 4.6rem;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5%;
+`;
+
+export const HrButtonsTopSearch = styled.hr`
+  width: 100%;
+  margin: auto;
+  border: 0.1rem solid rgba(159, 159, 159, 0.7);
+  background: rgba(159, 159, 159, 0.7);
+  margin-bottom: 0px;
+  display: none;
+  &.activeRepositoryButton {
+    display: flex;
+  }
+  &.activeFavoritesButton {
+    display: flex;
+  }
+`;
+
+export const ShareButton = styled.button`
+  width: 20.8rem;
+  height: 4.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #ffffff;
+  background: linear-gradient(90deg, #0487ff 0%, #1665c1 100%);
+  box-shadow: inset 0.5rem 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+  border-radius: 0.8rem;
+  border: none;
+  cursor: pointer;
+  @media (max-width: 940px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const ShareMiniButton = styled.button`
+  display: none;
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, #0487ff 0%, #1665c1 100%);
+    box-shadow: inset 0.5rem 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+    border-radius: 0.8rem;
+    cursor: pointer;
+    border: none;
+    width: 4.4rem;
+    height: 4rem;
+  }
+`;
+
+export const BackButton = styled.button`
+  width: 13.6rem;
+  height: 4.7rem;
+  background: linear-gradient(90deg, #0487ff 0%, #1665c1 100%);
+  border: none;
+  border-radius: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.15);
+  margin: 2.4% 2.4% 0 0;
+  @media (max-width: 940px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 768px) {
+    order: 1;
+  }
+`;
+
+export const ViewMore = styled.button`
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 1.8rem;
+  color: #ffffff;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+`;

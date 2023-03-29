@@ -1,5 +1,4 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React, { FunctionComponent, useState } from "react";
 import { InputSearch } from "../Inputs/InputStyled";
 import { Button } from "../Buttons/Buttons";
 import { HomeIcon } from "../LoginPage/LoginPageStyled";
@@ -17,8 +16,9 @@ import {
   UserDescription,
   UserNameDescription,
 } from "./SearchStyled";
-export const SearchPage = () => {
-  let history = useHistory();
+import { Modal } from "./components/Modal/Modal";
+export const SearchPage: FunctionComponent = () => {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <ContainerSearchPage>
       <ContainerSearch width='70%'>
@@ -37,8 +37,13 @@ export const SearchPage = () => {
               <UserName>Nome</UserName>
               <UserDescription>Description</UserDescription>
             </UserNameDescription>
-            <Button type='button' text='VER MAIS' />
+            <Button
+              type='button'
+              text='VER MAIS'
+              onClick={() => setOpenModal(true)}
+            />
           </CardUser>
+          <Modal isOpen={openModal} setModalOpen={()=>setOpenModal(!openModal)}/>
           <CardUser></CardUser>
           <CardUser></CardUser>
         </SearchUsers>

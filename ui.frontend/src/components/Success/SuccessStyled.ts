@@ -1,12 +1,22 @@
 import styled from "styled-components";
 import CompassBall from "../../assets/uol-ball-transparent.png";
 
+const isAuthoring = () => {
+  const href =
+    window.location !== window.parent.location
+      ? document.referrer
+      : document.location.href;
+
+  return href.includes("/editor.html");
+};
+
 export const SuccessContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 937px;
+  height: ${isAuthoring() ? "93.7rem" : "100vh"};
 `;
+
 export const SuccessMain = styled.main`
   display: flex;
   flex-direction: row;
