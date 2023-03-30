@@ -18,14 +18,18 @@
 
 package com.reactapp.core.models.impl;
 
+import com.adobe.acs.commons.models.injectors.annotation.ChildResourceFromRequest;
 import com.adobe.cq.export.json.ComponentExporter;
 import com.adobe.cq.export.json.ExporterConstants;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.reactapp.core.models.LoginPage;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Exporter;
 import org.apache.sling.models.annotations.Model;
+import org.apache.sling.models.annotations.injectorspecific.InjectionStrategy;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 @Model(adaptables = {
     SlingHttpServletRequest.class
@@ -38,8 +42,48 @@ public class LoginPageImpl
     implements LoginPage
 {
 
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    private String loginTitle;
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    private String loginParagraph;
+    @ChildResourceFromRequest(injectionStrategy = InjectionStrategy.OPTIONAL)
+    private com.adobe.cq.wcm.core.components.models.Image loginLogo;
+    @ChildResourceFromRequest(injectionStrategy = InjectionStrategy.OPTIONAL)
+    private com.adobe.cq.wcm.core.components.models.Image loginImage;
+    @ValueMapValue(injectionStrategy = InjectionStrategy.OPTIONAL)
+    private String loginButtonColor;
     @SlingObject
     private Resource resource;
+
+    @Override
+    @JsonProperty("loginTitle")
+    public String getLoginTitle() {
+        return loginTitle;
+    }
+
+    @Override
+    @JsonProperty("loginParagraph")
+    public String getLoginParagraph() {
+        return loginParagraph;
+    }
+
+    @Override
+    @JsonProperty("loginLogo")
+    public com.adobe.cq.wcm.core.components.models.Image getLoginLogo() {
+        return loginLogo;
+    }
+
+    @Override
+    @JsonProperty("loginImage")
+    public com.adobe.cq.wcm.core.components.models.Image getLoginImage() {
+        return loginImage;
+    }
+
+    @Override
+    @JsonProperty("loginButtonColor")
+    public String getLoginButtonColor() {
+        return loginButtonColor;
+    }
 
     @Override
     public String getExportedType() {

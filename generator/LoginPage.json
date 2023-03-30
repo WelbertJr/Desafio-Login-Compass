@@ -9,7 +9,7 @@
     "model-impl-pkg": "com.reactapp.core.models.impl"
   },
   "name": "login-page",
-  "title": "Login Page",
+  "title": "Página de Login",
   "group": "React App - Content",
   "type": "components",
   "options": {
@@ -25,6 +25,59 @@
     "content-exporter": true,
     "model-adaptables": ["request"],
     "generic-javadoc": false,
-    "properties": []
+    "properties-tabs": [
+      {
+        "id": "tab-0",
+        "label": "Textos",
+        "fields": ["loginTitle", "loginParagraph"]
+      },
+      {
+        "id": "tab-1",
+        "label": "Imagens",
+        "fields": ["loginLogo", "loginImage"]
+      },
+      {
+        "id": "tab-2",
+        "label": "Cor do Botão",
+        "fields": ["loginButtonColor"]
+      }
+    ],
+    "properties": [
+      {
+        "field": "loginTitle",
+        "label": "Digite um título para a página:",
+        "type": "textfield",
+        "json-expose": true,
+        "json-property": "loginTitle"
+      },
+      {
+        "field": "loginParagraph",
+        "label": "Digite um texto para o parágrafo:",
+        "type": "textfield",
+        "json-expose": true,
+        "json-property": "loginParagraph"
+      },
+      {
+        "field": "loginLogo",
+        "label": "Selecione uma logo:",
+        "type": "image",
+        "json-expose": true,
+        "json-property": "loginLogo"
+      },
+      {
+        "field": "loginImage",
+        "label": "Selecione uma imagem:",
+        "type": "image",
+        "json-expose": true,
+        "json-property": "loginImage"
+      },
+      {
+        "field": "loginButtonColor",
+        "label": "Escolha uma cor para o botão:",
+        "type": "textfield",
+        "json-expose": true,
+        "json-property": "loginButtonColor"
+      }
+    ]
   }
 }

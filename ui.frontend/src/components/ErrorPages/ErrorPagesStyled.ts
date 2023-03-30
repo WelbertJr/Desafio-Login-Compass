@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerError = styled.div`
-  width: 37.9rem;
+  width: 31rem;
   height: 28.7rem;
   display: flex;
   align-items: center;
@@ -30,5 +30,5 @@ export const ErrorParagraph = styled.p`
   color: #e0e0e0;
   text-align: center;
   margin: 5% 0 10% 0;
-  width: 80%;
+  width: 77%;
 `;

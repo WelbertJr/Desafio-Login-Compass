@@ -6,14 +6,16 @@ import React, {
 } from "react";
 import {
   Main,
-  ContainerIcon,
-  Icon,
+  MiniContainerLoginIcon,
+  SubMiniContianerLoginIcon,
+  MiniLoginIcon,
   TitleLogin,
   ParagraphLogin,
   Form,
   ContainerRight,
-  HomeIcon,
   SubContainerLeft,
+  BackgroundImage,
+  LoginLogo,
 } from "./LoginPageStyled";
 import { ContainerGray } from "./Components/ContainerGray/ContainerGray";
 import { Input } from "../Inputs/Input";
@@ -23,12 +25,27 @@ import { Button } from "../Buttons/Buttons";
 import { useHistory } from "react-router-dom";
 import { PopUp } from "./Components/PopUp/PopUp";
 import { Btncontainer } from "./Components/PopUp/PopUpStyled";
-
-const LoginPage: FunctionComponent = () => {
+import loginIcon from "../../assets/compassuol-logo-login.png";
+import backgroundLogin from "../../assets/img-notebook.png";
+interface LoginPageProps {
+  loginTitle: string;
+  loginParagraph: string;
+  loginImage: any;
+  loginLogo: any;
+  loginButtonColor: string;
+}
+const LoginPage: FunctionComponent<LoginPageProps> = ({
+  loginTitle,
+  loginParagraph,
+  loginImage = { src: backgroundLogin },
+  loginLogo = { src: loginIcon },
+  loginButtonColor,
+}) => {
   const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [isFormValid, setIsFormValid] = useState<boolean>(true);
+
   let history = useHistory();
   useEffect(() => {
     if (
@@ -42,7 +59,7 @@ const LoginPage: FunctionComponent = () => {
             localStorage.getItem("userName") != null &&
             localStorage.getItem("userPassword") != null
           ) {
-            history.push("/content/reactapp/us/en/success-page.html");
+            history.push("./success-page.html");
           }
         }
       }, 5500);
@@ -68,13 +85,20 @@ const LoginPage: FunctionComponent = () => {
     return (
       <Main>
         <ContainerGray width='50%'>
-          <ContainerIcon>
-            <Icon />
-          </ContainerIcon>
+          <MiniContainerLoginIcon>
+            <SubMiniContianerLoginIcon>
+              <MiniLoginIcon
+                src={loginLogo && loginLogo.src}
+                alt='Login Logo'
+              />
+            </SubMiniContianerLoginIcon>
+          </MiniContainerLoginIcon>
           <SubContainerLeft>
-            <TitleLogin>Olá,</TitleLogin>
+            <TitleLogin>{loginTitle ? loginTitle : "Olá,"}</TitleLogin>
             <ParagraphLogin>
-              Para continuar navegando de forma segura, efetue o login na rede.
+              {loginParagraph
+                ? loginParagraph
+                : "Para continuar navegando de forma segura, efetue o login na rede."}
             </ParagraphLogin>
             <Form onSubmit={handleSignUpForm}>
               <Input
@@ -106,7 +130,11 @@ const LoginPage: FunctionComponent = () => {
           </SubContainerLeft>
         </ContainerGray>
         <ContainerRight width='50%'>
-          <HomeIcon />
+          <BackgroundImage
+            src={loginImage && loginImage.src}
+            alt='Background Image'
+          />
+          <LoginLogo src={loginLogo && loginLogo.src} alt='Login Logo' />
         </ContainerRight>
       </Main>
     );
@@ -114,13 +142,20 @@ const LoginPage: FunctionComponent = () => {
     return (
       <Main>
         <ContainerGray width='50%'>
-          <ContainerIcon>
-            <Icon />
-          </ContainerIcon>
+          <MiniContainerLoginIcon>
+            <SubMiniContianerLoginIcon>
+              <MiniLoginIcon
+                src={loginLogo && loginLogo.src}
+                alt='Login Logo'
+              />
+            </SubMiniContianerLoginIcon>
+          </MiniContainerLoginIcon>
           <SubContainerLeft>
-            <TitleLogin>Olá,</TitleLogin>
+            <TitleLogin>{loginTitle ? loginTitle : "Olá,"}</TitleLogin>
             <ParagraphLogin>
-              Para continuar navegando de forma segura, efetue o login na rede.
+              {loginParagraph
+                ? loginParagraph
+                : "Para continuar navegando de forma segura, efetue o login na rede."}
             </ParagraphLogin>
             <Form onSubmit={handleSignUpForm}>
               <Input
@@ -145,12 +180,20 @@ const LoginPage: FunctionComponent = () => {
                 />
                 {error && <ErrorMessage>{error}</ErrorMessage>}
               </ContainerPassword>
-              <Button type='submit' text='Continuar' />
+              <Button
+                type='submit'
+                text='Continuar'
+                bgColorLogin={loginButtonColor}
+              />
             </Form>
           </SubContainerLeft>
         </ContainerGray>
         <ContainerRight width='50%'>
-          <HomeIcon />
+          <BackgroundImage
+            src={loginImage && loginImage.src}
+            alt='Background Image'
+          />
+          <LoginLogo src={loginLogo && loginLogo.src} alt='Login Logo' />
         </ContainerRight>
       </Main>
     );

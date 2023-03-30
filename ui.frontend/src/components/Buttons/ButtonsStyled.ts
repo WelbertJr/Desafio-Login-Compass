@@ -1,10 +1,14 @@
 import styled from "styled-components";
-
-export const ButtonStyled = styled.button`
+interface ButtonsProps {
+  bgColorLogin?: string;
+  bgColorError?: string;
+}
+export const ButtonStyled = styled.button<ButtonsProps>`
   border: none;
   width: 100%;
   height: 67px;
-  background-color: #cf2e0e;
+  background-color: ${({ bgColorLogin }) =>
+    bgColorLogin ? bgColorLogin : "#cf2e0e"};
   border-radius: 100px;
   font-family: "Poppins";
   color: white;
@@ -15,7 +19,8 @@ export const ButtonStyled = styled.button`
     margin-top: 5%;
   }
   &:hover {
-    background-color: #f22e07;
+    background-color: ${({ bgColorLogin }) =>
+      bgColorLogin ? bgColorLogin : "#f22e07"};
     cursor: pointer;
     font-size: 1.6rem;
   }
@@ -81,7 +86,7 @@ export const ButtonRemoveStorage = styled.button`
   }
 `;
 
-export const ButtonError = styled.button`
+export const ButtonError = styled.button<ButtonsProps>`
   width: 100%;
   height: 6.7rem;
   display: flex;
@@ -91,12 +96,14 @@ export const ButtonError = styled.button`
   font-weight: 700;
   font-size: 1.8rem;
   color: #ffffff;
-  background: #cf2e0e;
+  background: ${({ bgColorError }) =>
+    bgColorError ? bgColorError : "#cf2e0e"};
   box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.15);
   border-radius: 5rem;
   border: none;
   &:hover {
-    background-color: #f22e07;
+    background-color: ${({ bgColorError }) =>
+      bgColorError ? bgColorError : "#f22e07"};
     cursor: pointer;
     font-size: 2rem;
     @media (max-width: 425px) {

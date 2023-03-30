@@ -25,17 +25,25 @@ interface ButtonProps {
   type: any;
   onClick?: () => void;
   counter?: number;
+  bgColorLogin?: string;
+  bgColorError?: string;
 }
 
 export const Button: FunctionComponent<ButtonProps> = ({
   text,
   className,
+  bgColorLogin,
   type,
+  bgColorError,
   counter,
   onClick,
 }) => {
   if (text === "Continuar") {
-    return <ButtonStyled type={type}>{text}</ButtonStyled>;
+    return (
+      <ButtonStyled bgColorLogin={bgColorLogin} type={type}>
+        {text}
+      </ButtonStyled>
+    );
   }
   if (text === "Acessar Busca") {
     return (
@@ -60,7 +68,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
   }
   if (text === "Voltar para página inicial") {
     return (
-      <ButtonError type={type} onClick={onClick}>
+      <ButtonError type={type} onClick={onClick} bgColorError={bgColorError}>
         {text}
       </ButtonError>
     );

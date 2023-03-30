@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from "react";
 import { InputSearch } from "../Inputs/InputStyled";
 import { Button } from "../Buttons/Buttons";
-import { HomeIcon } from "../LoginPage/LoginPageStyled";
+import { LoginLogo } from "../LoginPage/LoginPageStyled";
 import {
   ContainerSearch,
   ContainerSearchPage,
@@ -43,13 +43,16 @@ export const SearchPage: FunctionComponent = () => {
               onClick={() => setOpenModal(true)}
             />
           </CardUser>
-          <Modal isOpen={openModal} setModalOpen={()=>setOpenModal(!openModal)}/>
+          <Modal
+            isOpen={openModal}
+            setModalOpen={() => setOpenModal(!openModal)}
+          />
           <CardUser></CardUser>
           <CardUser></CardUser>
         </SearchUsers>
       </ContainerSearch>
       <ContainerImage width='30%'>
-        <HomeIcon />
+        <LoginLogo alt='Login Logo' />
       </ContainerImage>
     </ContainerSearchPage>
   );

@@ -19,6 +19,7 @@
 package com.reactapp.core.models;
 
 import com.adobe.cq.export.json.ComponentExporter;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.osgi.annotation.versioning.ConsumerType;
 
 
@@ -31,5 +32,20 @@ public interface LoginPage
     extends ComponentExporter
 {
 
+
+    @JsonProperty("loginTitle")
+    String getLoginTitle();
+
+    @JsonProperty("loginParagraph")
+    String getLoginParagraph();
+
+    @JsonProperty("loginLogo")
+    com.adobe.cq.wcm.core.components.models.Image getLoginLogo();
+
+    @JsonProperty("loginImage")
+    com.adobe.cq.wcm.core.components.models.Image getLoginImage();
+
+    @JsonProperty("loginButtonColor")
+    String getLoginButtonColor();
 
 }
