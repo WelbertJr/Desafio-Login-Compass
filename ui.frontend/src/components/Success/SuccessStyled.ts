@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import CompassBall from "../../assets/uol-ball-transparent.png";
 
 const isAuthoring = () => {
   const href =
@@ -27,13 +26,9 @@ export const SuccessMain = styled.main`
   font-family: "Poppins";
 `;
 
-export const SuccessImage = styled.div`
-  background-image: url(${CompassBall});
+export const ContainerSuccessImage = styled.div`
   width: 67.2rem;
   height: 46.85rem;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: left bottom;
   @media (max-height: 768px) {
     width: 90vw;
     height: 50vh;
@@ -42,6 +37,11 @@ export const SuccessImage = styled.div`
     width: 90vw;
     height: 50vh;
   }
+`;
+
+export const SuccessImage = styled.img`
+  width: 100%;
+  height: 100%;
 `;
 
 export const SuccessText = styled.div`

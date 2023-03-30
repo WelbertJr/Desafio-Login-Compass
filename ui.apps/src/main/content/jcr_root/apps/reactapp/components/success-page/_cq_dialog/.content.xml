@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ |  ***********************************************************************
+ |  React App CONFIDENTIAL
+ |  ___________________
+ |
+ |  Copyright 2023 React App
+ |  All Rights Reserved.
+ |
+ |  NOTICE:  All information contained herein is, and remains the property
+ |  of React App and its suppliers, if any. The intellectual and
+ |  technical concepts contained herein are proprietary to React App
+ |  and its suppliers and are protected by trade secret or copyright law.
+ |  Dissemination of this information or reproduction of this material
+ |  is strictly forbidden unless prior written permission is obtained
+ |  from React App.
+ |  ***********************************************************************
+-->
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0"
+   xmlns:cq="http://www.day.com/jcr/cq/1.0"
+   xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+   xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+   xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+   jcr:primaryType="nt:unstructured"
+   jcr:title="Página de Sucesso"
+   sling:resourceType="cq/gui/components/authoring/dialog">
+   <content jcr:primaryType="nt:unstructured"
+      sling:resourceType="granite/ui/components/coral/foundation/container">
+      <items jcr:primaryType="nt:unstructured">
+         <tabs jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/tabs">
+            <items jcr:primaryType="nt:unstructured">
+               <tab-0 jcr:primaryType="nt:unstructured"
+                  jcr:title="Imagens"
+                  sling:resourceType="granite/ui/components/coral/foundation/container">
+                  <layout jcr:primaryType="nt:unstructured"
+                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"/>
+                  <items jcr:primaryType="nt:unstructured">
+                     <column jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                           <successLogoResType jcr:primaryType="nt:unstructured"
+                              name="./successLogo/sling:resourceType"
+                              sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                              value="core/wcm/components/image/v2/image"/>
+                           <successLogo allowUpload="{Boolean}false"
+                              autoStart="{Boolean}false"
+                              class="cq-droptarget"
+                              cq-msm-lockable="./successLogo/file"
+                              fieldLabel="Escolha uma logo para a página:"
+                              fileNameParameter="./successLogo/fileName"
+                              fileReferenceParameter="./successLogo/fileReference"
+                              jcr:primaryType="nt:unstructured"
+                              mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff,image/svg+xml]"
+                              multiple="{Boolean}false"
+                              name="./successLogo/file"
+                              sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                              title="Drag to select image"
+                              uploadUrl="${suffix.path}"
+                              useHTML5="{Boolean}true"/>
+                           <successImageResType jcr:primaryType="nt:unstructured"
+                              name="./successImage/sling:resourceType"
+                              sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                              value="core/wcm/components/image/v2/image"/>
+                           <successImage allowUpload="{Boolean}false"
+                              autoStart="{Boolean}false"
+                              class="cq-droptarget"
+                              cq-msm-lockable="./successImage/file"
+                              fieldLabel="Escolha uma imagem para a página:"
+                              fileNameParameter="./successImage/fileName"
+                              fileReferenceParameter="./successImage/fileReference"
+                              jcr:primaryType="nt:unstructured"
+                              mimeTypes="[image/gif,image/jpeg,image/png,image/webp,image/tiff,image/svg+xml]"
+                              multiple="{Boolean}false"
+                              name="./successImage/file"
+                              sling:resourceType="cq/gui/components/authoring/dialog/fileupload"
+                              title="Drag to select image"
+                              uploadUrl="${suffix.path}"
+                              useHTML5="{Boolean}true"/>
+                        </items>
+                     </column>
+                  </items>
+               </tab-0>
+               <tab-1 jcr:primaryType="nt:unstructured"
+                  jcr:title="Textos"
+                  sling:resourceType="granite/ui/components/coral/foundation/container">
+                  <layout jcr:primaryType="nt:unstructured"
+                     sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"/>
+                  <items jcr:primaryType="nt:unstructured">
+                     <column jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                        <items jcr:primaryType="nt:unstructured">
+                           <successTexts composite="{Boolean}true"
+                              fieldLabel="Título com descrição:"
+                              jcr:primaryType="nt:unstructured"
+                              sling:resourceType="granite/ui/components/coral/foundation/form/multifield">
+                              <field cq-msm-lockable="./successTexts"
+                                 jcr:primaryType="nt:unstructured"
+                                 name="./successTexts"
+                                 sling:resourceType="granite/ui/components/foundation/form/fieldset">
+                                 <items jcr:primaryType="nt:unstructured">
+                                    <successTitleMultifield fieldLabel="Digite um título:"
+                                       jcr:primaryType="nt:unstructured"
+                                       name="./successTitleMultifield"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/textfield"/>
+                                    <successColorTitleMultifield fieldLabel="Ecolha a cor do título acima:"
+                                       jcr:primaryType="nt:unstructured"
+                                       name="./successColorTitleMultifield"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/colorfield"/>
+                                    <checkboxMultifield jcr:primaryType="nt:unstructured"
+                                       name="./checkboxMultifield"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/checkbox"
+                                       text="Desejo um título menor!"
+                                       value="{Boolean}true"/>
+                                    <successDescriptionMultifield fieldLabel="Digite uma descrição:"
+                                       jcr:primaryType="nt:unstructured"
+                                       name="./successDescriptionMultifield"
+                                       sling:resourceType="granite/ui/components/coral/foundation/form/textfield"/>
+                                 </items>
+                              </field>
+                           </successTexts>
+                        </items>
+                     </column>
+                  </items>
+               </tab-1>
+            </items>
+         </tabs>
+      </items>
+   </content>
+</jcr:root>

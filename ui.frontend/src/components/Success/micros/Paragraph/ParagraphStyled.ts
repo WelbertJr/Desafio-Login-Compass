@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 interface TextParagraphProps {
   fontSize: string;
-  color: string;
+  color?: string;
   fontWeight?: string;
   padding?: string;
   children: ReactNode;
@@ -12,7 +12,7 @@ interface TextParagraphProps {
 export const ParagraphH2 = styled.h2<TextParagraphProps>`
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ fontWeight }) => fontWeight};
-  color: ${({ color }) => color};
+  ${({ color }) => (color ? color : "#c12d18")};
   padding: ${({ padding }) => padding};
   font-family: "Poppins";
   @media (max-width: 1133px) {
@@ -53,7 +53,7 @@ export const ParagraphP = styled.p<TextParagraphProps>`
 export const ParagraphH1 = styled.h1<TextParagraphProps>`
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ fontWeight }) => fontWeight};
-  color: ${({ color }) => color};
+  color: ${({ color }) => (color ? color : "#c12d18")};
   padding: ${({ padding }) => padding};
   font-family: "Poppins";
   @media (max-width: 1320px) {

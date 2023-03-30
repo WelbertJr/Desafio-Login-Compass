@@ -6,67 +6,74 @@ import {
   SuccessText,
   SuccessContainer,
   SuccessImage,
+  ContainerSuccessImage,
 } from "./SuccessStyled";
 import { Footer } from "./components/Footer/Footer";
 import React from "react";
+import BgSuccessImage from "../../assets/uol-ball-transparent.png";
+import IconSuccess from "../../assets/compassuol-logo-success.png";
+interface SuccessPageProps {
+  successLogo: any;
+  successImage: any;
+  successColorTitleMultifield: string;
+  successTexts: MultifieldTexts[];
+}
+interface MultifieldTexts {
+  successTitleMultifield: string;
+  successColorTitleMultifield: string;
+  successDescriptionMultifield: string;
+  checkboxMultifield: boolean;
+}
 
-const SuccessPage: FunctionComponent = () => {
+const defaultTexts = [
+  { successTitleMultifield: "Our mission is" },
+  { successDescriptionMultifield: "Nossa missão é" },
+  { successTitleMultifield: "to transform the world" },
+  { successDescriptionMultifield: "transformar o mundo" },
+  { successTitleMultifield: "building digital experiences" },
+  { successDescriptionMultifield: "construindo experiências digitais" },
+  { successTitleMultifield: "that enable our client's growth" },
+  {
+    successDescriptionMultifield:
+      "que permitam o crescimento dos nossos clientes",
+  },
+  { successColorTitleMultifield: "#C12D18" },
+  { checkboxMultifield: false },
+];
+const SuccessPage: FunctionComponent<SuccessPageProps> = ({
+  successImage = { src: BgSuccessImage },
+  successLogo = { src: IconSuccess },
+  successTexts = defaultTexts,
+}) => {
   return (
     <SuccessContainer>
-      <Header />
+      <Header logo={successLogo && successLogo.src} />
       <SuccessMain>
-        <SuccessImage />
+        <ContainerSuccessImage>
+          <SuccessImage
+            src={successImage && successImage.src}
+            alt='Success Image'
+          />
+        </ContainerSuccessImage>
         <SuccessText>
-          <Paragraph
-            fontSize='2.8rem'
-            color=' #c12d18'
-            text='Our mission is'
-            padding-bottom='0.3rem'
-            fontWeight='700'
-          ></Paragraph>
-          <Paragraph
-            fontSize='2rem'
-            color=' #222222'
-            text='Nossa missão é'
-            fontWeight='400'
-          ></Paragraph>
-          <Paragraph
-            fontSize='5rem'
-            color=' #c12d18'
-            text='to transform the world'
-            padding-bottom='0.8rem'
-            fontWeight='700'
-          ></Paragraph>
-          <Paragraph
-            fontSize='2rem'
-            color=' #222222'
-            text='transformar o mundo'
-            fontWeight='400'
-          ></Paragraph>
-          <Paragraph
-            fontSize='5rem'
-            color=' #c12d18'
-            text='building digital experiences'
-            fontWeight='700'
-          ></Paragraph>
-          <Paragraph
-            fontSize='2rem'
-            color=' #222222'
-            text='construindo experiências digitais'
-            fontWeight='400'
-          ></Paragraph>
-          <Paragraph
-            fontSize='5rem'
-            color=' #c12d18'
-            text='that enable our clients growth'
-            fontWeight='700'
-          ></Paragraph>
-          <Paragraph
-            fontSize='2rem'
-            color=' #222222'
-            text='que permitam o crescimento dos nossos clientes'
-            fontWeight='400'
-          ></Paragraph>
+          {successTexts.map((item, index) => (
+            <>
+              <Paragraph
+                key={index}
+                fontSize={item.checkboxMultifield ? "2.8rem" : "5rem"}
+                color={item.successColorTitleMultifield}
+                text={item.successTitleMultifield}
+                padding-bottom='0.8rem'
+                fontWeight='700'
+              />
+              <Paragraph
+                fontSize='2rem'
+                color=' #222222'
+                text={item.successDescriptionMultifield}
+                fontWeight='400'
+              />
+            </>
+          ))}
         </SuccessText>
       </SuccessMain>
       <Footer />

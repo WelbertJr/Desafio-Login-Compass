@@ -1,12 +1,12 @@
 import React from "react";
 import { FunctionComponent, ReactNode } from "react";
-import { ParagraphH2, ParagraphP, ParagraphH1 } from "./ParagraphStyled";
+import { ParagraphP, ParagraphH1 } from "./ParagraphStyled";
 interface ParagraphProps {
   fontSize: string;
-  color: string;
+  color?: string;
   fontWeight: string;
   padding?: string;
-  text: string;
+  text?: string;
   children?: ReactNode;
 }
 export const Paragraph: FunctionComponent<ParagraphProps> = ({
@@ -16,18 +16,7 @@ export const Paragraph: FunctionComponent<ParagraphProps> = ({
   padding,
   text,
 }) => {
-  if (text === "Our mission is")
-    return (
-      <ParagraphH2
-        fontSize={fontSize}
-        color={color}
-        fontWeight={fontWeight}
-        padding={padding}
-      >
-        {text}
-      </ParagraphH2>
-    );
-  else if (fontSize === "2rem")
+  if (fontSize === "2rem")
     return (
       <ParagraphP
         fontSize={fontSize}
