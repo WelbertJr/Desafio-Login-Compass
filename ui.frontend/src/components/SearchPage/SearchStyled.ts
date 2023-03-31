@@ -1,3 +1,4 @@
+import { ErrorMessage } from "./../Inputs/InputStyled";
 import styled from "styled-components";
 import { Container } from "../LoginPage/Components/ContainerGray/ContainerGrayStyled";
 import { ContainerRight } from "../LoginPage/LoginPageStyled";
@@ -49,15 +50,51 @@ export const ParagraphSearch = styled.p`
   color: #e0e0e0;
 `;
 
+export const ContainerInputError = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  height: 100%;
+`;
+
+export const SearchError = styled(ErrorMessage)`
+  margin: 2% auto;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 2% 0;
+    font-size: 1.2rem;
+  }
+`;
+
 export const ContainerInputButtonSearch = styled.div`
   display: flex;
   margin-bottom: 3.4%;
+  min-height: 12rem;
+`;
+
+export const ContainerUsersRepos = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 53.6rem;
+  scrollbar-width: thin;
+  scrollbar-color: #aaa;
+  overflow: auto;
+
+  ::-webkit-scrollbar {
+    width: 1rem;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 1rem;
+  }
 `;
 
 export const CardUser = styled.div`
   display: flex;
   width: 100%;
-  height: 20%;
+  min-height: 20%;
   margin-top: 2.4%;
   background: #26292c;
   border: 0.1rem solid #aaaaaa;

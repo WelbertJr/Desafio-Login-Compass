@@ -73,7 +73,7 @@ export const ErrorMessage = styled.span`
 `;
 
 export const InputSearch = styled.input`
-  width: 75%;
+  width: 100%;
   min-height: 6rem;
   background: #26292c;
   border: 1px solid #ffffff;
@@ -83,7 +83,4 @@ export const InputSearch = styled.input`
   font-size: 1.6rem;
   padding-left: 6%;
   color: #e0e0e0;
-  @media (max-width: 768px) {
-    min-height: 24%;
-  }
 `;

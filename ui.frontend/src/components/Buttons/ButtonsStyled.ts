@@ -118,7 +118,7 @@ export const ButtonError = styled.button<ButtonsProps>`
 export const ButtonSearch = styled.button`
   width: 20%;
   margin-left: 4.1%;
-  min-height: 6.7rem;
+  height: 50%;
   border: none;
   display: flex;
   justify-content: space-evenly;
@@ -142,6 +142,9 @@ export const ButtonSearch = styled.button`
     }
     @media (max-width: 960px) {
       font-size: 1.4rem;
+    }
+    @media (max-width: 768px) {
+      font-size: 0;
     }
   }
 
