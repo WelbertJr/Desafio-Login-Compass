@@ -1,0 +1,83 @@
+{
+  "project-settings": {
+    "code-owner": "React App",
+    "bundle-path": "../core/src/main/java",
+    "test-path": "../core/src/test/java",
+    "apps-path": "../ui.apps/src/main/content/jcr_root/apps",
+    "component-path": "reactapp",
+    "model-interface-pkg": "com.reactapp.core.models",
+    "model-impl-pkg": "com.reactapp.core.models.impl"
+  },
+  "name": "search-page",
+  "title": "Página de Busca",
+  "group": "React App - Content",
+  "type": "components",
+  "options": {
+    "js": false,
+    "jstxt": false,
+    "css": false,
+    "csstxt": false,
+    "html": false,
+    "html-content": false,
+    "slingmodel": true,
+    "testclass": false,
+    "junit-major-version": 5,
+    "content-exporter": true,
+    "model-adaptables": ["request"],
+    "generic-javadoc": false,
+    "properties-tabs": [
+      {
+        "id": "tab-0",
+        "label": "Textos",
+        "fields": ["searchTitle", "searchParagraph"]
+      },
+      {
+        "id": "tab-1",
+        "label": "Cor do Botão",
+        "fields": ["searchButtonColor"]
+      },
+      {
+        "id": "tab-2",
+        "label": "Imagens",
+        "fields": ["searchLogo", "searchImage"]
+      }
+    ],
+    "properties": [
+      {
+        "field": "searchTitle",
+        "label": "Digite um título para a página:",
+        "type": "textfield",
+        "json-expose": true,
+        "json-property": "searchTitle"
+      },
+      {
+        "field": "searchParagraph",
+        "label": "Digite um texto para o parágrafo:",
+        "type": "textfield",
+        "json-expose": true,
+        "json-property": "searchParagraph"
+      },
+      {
+        "field": "searchButtonColor",
+        "label": "Escolha uma cor para o botão:",
+        "type": "textfield",
+        "json-expose": true,
+        "json-property": "searchButtonColor"
+      },
+      {
+        "field": "searchLogo",
+        "label": "Escolha uma logo para a página:",
+        "type": "image",
+        "json-expose": true,
+        "json-property": "searchLogo"
+      },
+      {
+        "field": "searchImage",
+        "label": "Escolha uma imagem para a página:",
+        "type": "image",
+        "json-expose": true,
+        "json-property": "searchImage"
+      }
+    ]
+  }
+}

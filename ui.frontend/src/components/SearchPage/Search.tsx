@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useRef, useState } from "react";
 import { Input } from "../Inputs/Input";
 import { Button } from "../Buttons/Buttons";
-import { LoginLogo } from "../LoginPage/LoginPageStyled";
+import { BackgroundImage, LoginLogo } from "../LoginPage/LoginPageStyled";
 import {
   ContainerSearch,
   ContainerSearchPage,
@@ -21,42 +21,23 @@ import {
 } from "./SearchStyled";
 import { Modal } from "./components/Modal/Modal";
 import { User } from "./types/types";
-
-export const SearchPage: FunctionComponent = () => {
+import loginIcon from "../../assets/compassuol-logo-login.png";
+import backgroundLogin from "../../assets/img-notebook.png";
+interface SearchPageProps {
+  searchTitle: string;
+  searchParagraph: string;
+  searchImage: any;
+  searchLogo: any;
+  searchButtonColor: string;
+}
+const SearchPage: FunctionComponent<SearchPageProps> = ({
+  searchTitle,
+  searchParagraph,
+  searchImage = { src: backgroundLogin },
+  searchLogo = { src: loginIcon },
+  searchButtonColor,
+}) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  /* const handleSearch = (user: string) => {
-    setUser(user);
-    if (!user) {
-      setError("Digite um nome de usuário");
-      return;
-    }
-    fetch(`https://api.github.com/search/users?q=${user}`)
-      .then((response) => {
-        if (!response.ok) {
-          if (response.status === 404) {
-            throw new Error("Usuário não encontrado, tente novamente");
-          } else {
-            throw new Error("Erro ao buscar usuário");
-          }
-        }
-        setError(null);
-        return response.json();
-      })
-      .then((data) => {
-        if (data.items.length === 0) {
-          setRepositories([]);
-          setError("Usuário não encontrado, tente novamente");
-        } else {
-          setRepositories(data.items);
-          setError(null);
-        }
-        if (inputRef.current) {
-          inputRef.current.value = "";
-        }
-      })
-      .catch((error) => setError(error.message));
-  };*/
-
   const handleSearch = (user: string) => {
     setUser(user);
     if (!user) {
@@ -92,9 +73,11 @@ export const SearchPage: FunctionComponent = () => {
       <ContainerSearch width='70%'>
         <SearchUsers>
           <>
-            <TitleSearch>Busca</TitleSearch>
+            <TitleSearch>{searchTitle ? searchTitle : "Busca"}</TitleSearch>
             <ParagraphSearch>
-              Para encontrar o usuário desejado digite seu nome abaixo.
+              {searchParagraph
+                ? searchParagraph
+                : "Para encontrar o usuário desejado digite seu nome abaixo."}
             </ParagraphSearch>
             <ContainerInputButtonSearch>
               <ContainerInputError>
@@ -111,6 +94,7 @@ export const SearchPage: FunctionComponent = () => {
               <Button
                 type='button'
                 text='Buscar'
+                bgColorSearch={searchButtonColor}
                 onClick={() => {
                   handleSearch(user);
                 }}
@@ -150,8 +134,14 @@ export const SearchPage: FunctionComponent = () => {
         </SearchUsers>
       </ContainerSearch>
       <ContainerImage width='30%'>
-        <LoginLogo alt='Login Logo' />
+        <BackgroundImage
+          src={searchImage && searchImage.src}
+          alt='Background Image'
+        />
+        <LoginLogo src={searchLogo && searchLogo.src} alt='Login Logo' />
       </ContainerImage>
     </ContainerSearchPage>
   );
 };
+
+export default SearchPage;

@@ -27,6 +27,7 @@ interface ButtonProps {
   counter?: number;
   bgColorLogin?: string;
   bgColorError?: string;
+  bgColorSearch?: string;
 }
 
 export const Button: FunctionComponent<ButtonProps> = ({
@@ -35,6 +36,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
   bgColorLogin,
   type,
   bgColorError,
+  bgColorSearch,
   counter,
   onClick,
 }) => {
@@ -75,7 +77,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
   }
   if (text === "Buscar") {
     return (
-      <ButtonSearch type={type} onClick={onClick}>
+      <ButtonSearch type={type} onClick={onClick} bgColorSearch={bgColorSearch}>
         {text}
         <ContainerIcons>
           <BiSearch color={"white"} size={"3rem"} />

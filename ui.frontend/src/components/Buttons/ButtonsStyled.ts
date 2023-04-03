@@ -2,6 +2,7 @@ import styled from "styled-components";
 interface ButtonsProps {
   bgColorLogin?: string;
   bgColorError?: string;
+  bgColorSearch?: string;
 }
 export const ButtonStyled = styled.button<ButtonsProps>`
   border: none;
@@ -115,7 +116,7 @@ export const ButtonError = styled.button<ButtonsProps>`
   }
 `;
 
-export const ButtonSearch = styled.button`
+export const ButtonSearch = styled.button<ButtonsProps>`
   width: 20%;
   margin-left: 4.1%;
   height: 50%;
@@ -127,14 +128,16 @@ export const ButtonSearch = styled.button`
   font-family: "Poppins";
   font-weight: 700;
   font-size: 1.8rem;
-  background: #cf2e0e;
+  background: ${({ bgColorSearch }) =>
+    bgColorSearch ? bgColorSearch : "#cf2e0e"};
   box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.15);
   border-radius: 50px;
   cursor: pointer;
   filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
 
   &:hover {
-    background-color: #f22e07;
+    background-color: ${({ bgColorSearch }) =>
+      bgColorSearch ? bgColorSearch : "#f22e07"};
     cursor: pointer;
     font-size: 2rem;
     @media (max-width: 1320px) {
