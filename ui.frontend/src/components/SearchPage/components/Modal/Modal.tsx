@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import { Button } from "../../../Buttons/Buttons";
 import {
   CardModal,
@@ -16,23 +16,58 @@ import {
   CardRepositoriesList,
   ContainerFavoriteIcon,
   ContainerViewMore,
+  UserNameDescription,
 } from "./ModalStyled";
 import classNames from "classnames";
 import { MdStar } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
-
+import { User } from "../../types/types";
 interface ModalProps {
   isOpen: boolean;
   setModalOpen: () => void;
+  user: string;
+  repositories: User | null;
 }
 
 export const Modal: FunctionComponent<ModalProps> = ({
   isOpen,
   setModalOpen,
+  user,
+  repositories,
 }) => {
+  const [userData, setUserData] = useState<User[]>([]);
+  const [userStarred, setUserStarred] = useState<User[]>([]);
+  useEffect(() => {
+    if (isOpen) {
+      fetch(`https://api.github.com/users/${user}/repos`)
+        .then((response) => response.json())
+        .then((data) => setUserData(data))
+        .catch((error) => {
+          console.error(`API error: ${error}`);
+        });
+      fetch(`https://api.github.com/users/${user}/starred`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`API error: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          if (Array.isArray(data)) {
+            setUserStarred(data);
+          } else {
+            console.error(`Invalid API response: ${data}`);
+          }
+        })
+        .catch((error) => {
+          console.error(`API error: ${error}`);
+        });
+    }
+  }, [isOpen, user]);
+
   const [isActiveRepository, setIsActiveRepository] = useState(true);
   const [isActiveFavorites, setIsActiveFavorites] = useState(false);
-  const [isActiveIcon, setIsActiveIcon] = useState(false);
+  const [isActiveIcon] = useState(true);
   const [numRepositories, setNumRepositories] = useState(4);
   const [numFavoritesRepositories, setFavoritesRepositories] = useState(4);
   const handleClickRepositoriesButton = () => {
@@ -41,64 +76,47 @@ export const Modal: FunctionComponent<ModalProps> = ({
     }
     setIsActiveRepository(!isActiveRepository);
   };
+
+  const handleClickViewMore = () => {
+    setNumRepositories(numRepositories + 4);
+    setFavoritesRepositories(numFavoritesRepositories + 4);
+  };
+
   const handleClickFavoritesButton = () => {
     if (isActiveRepository) {
       setIsActiveRepository(false);
     }
     setIsActiveFavorites(!isActiveFavorites);
-    setFavoritesRepositories(numFavoritesRepositories + 4);
-  };
-  const handleClickIcon = () => {
-    setIsActiveIcon(!isActiveIcon);
-  };
-  const handleClickViewMore = () => {
-    setNumRepositories(numRepositories + 4);
+    setFavoritesRepositories(4);
   };
 
-  const repositories = [
-    { title: "Repositório 1", description: "Descrição do repositório" },
-    { title: "Repositório 2", description: "Descrição do repositório" },
-    { title: "Repositório 3", description: "Descrição do repositório" },
-    { title: "Repositório 4", description: "Descrição do repositório" },
-    { title: "Repositório 5", description: "Descrição do repositório" },
-    { title: "Repositório 6", description: "Descrição do repositório" },
-    { title: "Repositório 7", description: "Descrição do repositório" },
-    { title: "Repositório 8", description: "Descrição do repositório" },
-    { title: "Repositório 9", description: "Descrição do repositório" },
-  ];
-  const favoritesRepositories = [
-    { title: "Favorito 1", description: "Descrição do Favorito" },
-    { title: "Favorito 2", description: "Descrição do Favorito" },
-    { title: "Favorito 3", description: "Descrição do Favorito" },
-    { title: "Favorito 4", description: "Descrição do Favorito" },
-    { title: "Favorito 5", description: "Descrição do Favorito" },
-    { title: "Favorito 6", description: "Descrição do Favorito" },
-    { title: "Favorito 7", description: "Descrição do Favorito" },
-    { title: "Favorito 8", description: "Descrição do Favorito" },
-    { title: "Favorito 9", description: "Descrição do repositório" },
-  ];
-  const displayedRepositories = repositories.slice(0, numRepositories);
-  const displayedFavorites = favoritesRepositories.slice(
-    0,
-    numFavoritesRepositories
-  );
+  const displayedRepositories = userData.slice(0, numRepositories);
+  const displayedFavorites = userStarred.slice(0, numFavoritesRepositories);
+
   if (isOpen) {
     return (
       <ContainerModal>
         <CardModal>
-          <ContainerNameDescription>
-            <UserImage />
-            <div>
-              <UserName>Nome</UserName>
-              <RepositoryDescription>Description</RepositoryDescription>
-            </div>
-          </ContainerNameDescription>
+          {repositories && (
+            <ContainerNameDescription>
+              <UserImage src={repositories.avatar_url} />
+              <div>
+                <UserName>{repositories.login}</UserName>
+                <RepositoryDescription>
+                  {repositories.bio
+                    ? repositories.bio
+                    : "Sem descrição de perfil"}
+                </RepositoryDescription>
+                <UserNameDescription>{repositories.login}</UserNameDescription>
+              </div>
+            </ContainerNameDescription>
+          )}
           <ContainerButtonsCardRepositories>
             <ContainerButtonsTop>
               <Button
                 type='button'
                 text='Repositórios'
-                counter={repositories.length}
+                counter={userData.length}
                 onClick={handleClickRepositoriesButton}
                 className={classNames({
                   activeRepositoryButton: isActiveRepository,
@@ -107,7 +125,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
               <Button
                 type='button'
                 text='Favoritos'
-                counter={favoritesRepositories.length}
+                counter={userStarred.length}
                 onClick={handleClickFavoritesButton}
                 className={classNames({
                   activeFavoritesButton: isActiveFavorites,
@@ -116,22 +134,19 @@ export const Modal: FunctionComponent<ModalProps> = ({
             </ContainerButtonsTop>
             <RepositoriesCard>
               {isActiveRepository &&
-                displayedRepositories.map((repository) => (
-                  <CardRepositoriesList key={repository.title}>
+                displayedRepositories.map((repo, index) => (
+                  <CardRepositoriesList key={index}>
                     <ContainerTextRepositoriesList>
-                      <TitleRepositoryList>
-                        {repository.title}
-                      </TitleRepositoryList>
+                      <TitleRepositoryList>{repo.name}</TitleRepositoryList>
                       <DescriptionRepository>
-                        {repository.description}
+                        {repo.description ? repo.description : "Sem descrição"}
                       </DescriptionRepository>
                     </ContainerTextRepositoriesList>
                     <ContainerFavoriteIcon>
                       <MdStar
                         id='favorite-icon'
-                        onClick={handleClickIcon}
                         className={classNames({
-                          active: isActiveIcon,
+                          active: !isActiveIcon,
                         })}
                       />
                     </ContainerFavoriteIcon>
@@ -139,21 +154,19 @@ export const Modal: FunctionComponent<ModalProps> = ({
                     <Button type='button' />
                   </CardRepositoriesList>
                 ))}
+
               {isActiveFavorites &&
-                displayedFavorites.map((repository) => (
-                  <CardRepositoriesList key={repository.title}>
+                displayedFavorites.map((repo, index) => (
+                  <CardRepositoriesList key={index}>
                     <ContainerTextRepositoriesList>
-                      <TitleRepositoryList>
-                        {repository.title}
-                      </TitleRepositoryList>
+                      <TitleRepositoryList>{repo.name}</TitleRepositoryList>
                       <DescriptionRepository>
-                        {repository.description}
+                        {repo.description ? repo.description : "Sem descrição"}
                       </DescriptionRepository>
                     </ContainerTextRepositoriesList>
                     <ContainerFavoriteIcon>
                       <MdStar
                         id='favorite-icon'
-                        onClick={handleClickIcon}
                         className={classNames({
                           active: isActiveIcon,
                         })}

@@ -22,15 +22,19 @@ export const ContainerImage = styled(ContainerRight)`
 `;
 
 export const SearchUsers = styled.div`
-  width: 100%;
+  width: 87%;
   height: 87%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   margin: 5% 7.9% 7.4% 10.7%;
+  @media (max-width: 1124px) {
+    width: 85%;
+  }
   @media (max-width: 768px) {
     margin: 0;
     padding: 5% 4%;
+    width: 100%;
   }
 `;
 
@@ -77,30 +81,21 @@ export const ContainerUsersRepos = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 53.6rem;
-  scrollbar-width: thin;
-  scrollbar-color: #aaa;
-  overflow: auto;
-
-  ::-webkit-scrollbar {
-    width: 1rem;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: #aaa;
-    border-radius: 1rem;
-  }
 `;
 
 export const CardUser = styled.div`
   display: flex;
   width: 100%;
-  min-height: 20%;
+  height: 30%;
   margin-top: 2.4%;
   background: #26292c;
   border: 0.1rem solid #aaaaaa;
   border-radius: 0.8rem;
   align-items: center;
-  padding: 0 5%;
+  padding: 10%;
+  @media (max-width: 768px) {
+    max-height: 45%;
+  }
 `;
 
 export const UserImage = styled.img`
@@ -138,6 +133,7 @@ export const UserName = styled.h2`
   font-weight: 400;
   font-size: 2.4rem;
   color: #ffffff;
+  width: 100%;
   @media (max-width: 550px) {
     font-size: 1.8rem;
   }
@@ -151,6 +147,10 @@ export const UserDescription = styled.p`
   font-weight: 400;
   font-size: 1.6rem;
   color: #8d8d8d;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
   @media (max-width: 550px) {
     font-size: 1.2rem;
   }

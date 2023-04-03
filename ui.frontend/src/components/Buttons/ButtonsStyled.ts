@@ -196,6 +196,9 @@ export const ViewMoreButton = styled.button`
   @media (max-width: 900px) {
     font-size: 1.4rem;
   }
+  @media (max-width: 800px) {
+    font-size: 1.2rem;
+  }
   @media (max-width: 720px) {
     width: 25%;
     margin-left: 10%;
@@ -285,7 +288,7 @@ export const HrButtonsTopSearch = styled.hr`
 `;
 
 export const ShareButton = styled.button`
-  width: 20.8rem;
+  max-width: 20.8rem;
   height: 4.7rem;
   display: flex;
   align-items: center;
@@ -299,6 +302,10 @@ export const ShareButton = styled.button`
   border-radius: 0.8rem;
   border: none;
   cursor: pointer;
+  @media (max-width: 1150px) {
+    max-width: 12.8rem;
+    font-size: 1.4rem;
+  }
   @media (max-width: 940px) {
     font-size: 1rem;
   }
@@ -318,7 +325,7 @@ export const ShareMiniButton = styled.button`
     border-radius: 0.8rem;
     cursor: pointer;
     border: none;
-    width: 4.4rem;
+    min-width: 4.4rem;
     height: 4rem;
   }
 `;

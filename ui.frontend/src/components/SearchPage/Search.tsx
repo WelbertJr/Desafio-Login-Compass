@@ -17,22 +17,19 @@ import {
   ContainerInputError,
   SearchError,
   ContainerUsersRepos,
+  UserDescription,
 } from "./SearchStyled";
 import { Modal } from "./components/Modal/Modal";
+import { User } from "./types/types";
 
-type User = {
-  avatar_url: string;
-  login: string;
-  bio: string;
-};
 export const SearchPage: FunctionComponent = () => {
   const inputRef = useRef<HTMLInputElement>(null);
-  function handleSearch() {
+  /* const handleSearch = (user: string) => {
+    setUser(user);
     if (!user) {
       setError("Digite um nome de usuário");
       return;
     }
-
     fetch(`https://api.github.com/search/users?q=${user}`)
       .then((response) => {
         if (!response.ok) {
@@ -58,12 +55,38 @@ export const SearchPage: FunctionComponent = () => {
         }
       })
       .catch((error) => setError(error.message));
-  }
+  };*/
+
+  const handleSearch = (user: string) => {
+    setUser(user);
+    if (!user) {
+      setError("Digite um nome de usuário");
+      return;
+    }
+    fetch(`https://api.github.com/users/${user}`)
+      .then((response) => {
+        if (!response.ok) {
+          if (response.status === 404) {
+            throw new Error("Usuário não encontrado, tente novamente");
+          } else {
+            throw new Error("Erro ao buscar usuário");
+          }
+        }
+        setError(null);
+        return response.json();
+      })
+      .then((data) => {
+        setRepositories(data);
+        setError(null);
+      })
+      .catch((error) => setError(error.message));
+  };
 
   const [user, setUser] = useState<string>("");
-  const [repositories, setRepositories] = useState<User[]>([]);
+  const [repositories, setRepositories] = useState<User | null>(null);
   const [openModal, setOpenModal] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
   return (
     <ContainerSearchPage>
       <ContainerSearch width='70%'>
@@ -89,34 +112,39 @@ export const SearchPage: FunctionComponent = () => {
                 type='button'
                 text='Buscar'
                 onClick={() => {
-                  handleSearch();
-                  if (inputRef.current) {
-                    console.log(inputRef.current); // adicionado para debug
-                    inputRef.current.value = "";
-                  }
+                  handleSearch(user);
                 }}
               />
             </ContainerInputButtonSearch>
             <ContainerUsersRepos>
-              {repositories.map((user, index) => {
-                return (
-                  <CardUser key={index}>
-                    <UserImage src={user.avatar_url} alt='Foto de perfil' />
-                    <UserNameDescription>
-                      <UserName>{user.login}</UserName>
-                    </UserNameDescription>
-                    <Button
-                      type='button'
-                      text='VER MAIS'
-                      onClick={() => setOpenModal(true)}
-                    />
-                  </CardUser>
-                );
-              })}
+              {repositories && (
+                <CardUser>
+                  <UserImage
+                    src={repositories.avatar_url}
+                    alt='Foto de perfil'
+                  />
+                  <UserNameDescription>
+                    <UserName>{repositories.login}</UserName>
+                    <UserDescription>
+                      {repositories.bio ? repositories.bio : "Sem descrição"}
+                    </UserDescription>
+                  </UserNameDescription>
+                  <Button
+                    type='button'
+                    text='VER MAIS'
+                    onClick={() => {
+                      handleSearch(repositories.login);
+                      setOpenModal(true);
+                    }}
+                  />
+                </CardUser>
+              )}
             </ContainerUsersRepos>
             <Modal
               isOpen={openModal}
               setModalOpen={() => setOpenModal(!openModal)}
+              repositories={repositories}
+              user={user}
             />
           </>
         </SearchUsers>
