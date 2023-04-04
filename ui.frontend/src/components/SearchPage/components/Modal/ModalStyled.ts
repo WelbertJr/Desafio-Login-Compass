@@ -159,9 +159,7 @@ export const CardRepositoriesList = styled.div`
   padding: 4% 2%;
   display: flex;
   border-bottom: 0.1rem solid rgba(159, 159, 159, 0.7);
-  @media (max-width: 1337px) {
-    width: 100%;
-  }
+  justify-content: space-between;
 `;
 
 export const ContainerTextRepositoriesList = styled.div`

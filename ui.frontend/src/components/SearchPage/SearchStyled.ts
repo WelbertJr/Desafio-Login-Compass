@@ -2,7 +2,6 @@ import { ErrorMessage } from "./../Inputs/InputStyled";
 import styled from "styled-components";
 import { Container } from "../LoginPage/Components/ContainerGray/ContainerGrayStyled";
 import { ContainerRight } from "../LoginPage/LoginPageStyled";
-import Elipse from "../../assets/Ellipse.png";
 export const ContainerSearchPage = styled.div`
   display: flex;
 `;
@@ -22,19 +21,15 @@ export const ContainerImage = styled(ContainerRight)`
 `;
 
 export const SearchUsers = styled.div`
-  width: 87%;
+  width: 100%;
   height: 87%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   margin: 5% 7.9% 7.4% 10.7%;
-  @media (max-width: 1124px) {
-    width: 85%;
-  }
   @media (max-width: 768px) {
     margin: 0;
     padding: 5% 4%;
-    width: 100%;
   }
 `;
 
@@ -81,20 +76,30 @@ export const ContainerUsersRepos = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 53.6rem;
+  scrollbar-width: thin;
+  scrollbar-color: #aaa;
+  overflow: auto;
+  ::-webkit-scrollbar {
+    width: 1rem;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 1rem;
+  }
 `;
 
 export const CardUser = styled.div`
   display: flex;
   width: 100%;
-  height: 30%;
   margin-top: 2.4%;
   background: #26292c;
   border: 0.1rem solid #aaaaaa;
   border-radius: 0.8rem;
   align-items: center;
-  padding: 10%;
+  padding: 0 5%;
   @media (max-width: 768px) {
-    max-height: 45%;
+    padding: 3% 5%;
   }
 `;
 
@@ -102,14 +107,18 @@ export const UserImage = styled.img`
   width: 9.3rem;
   height: 9.3rem;
   border-radius: 50%;
-  background-image: url(${Elipse});
-  @media (max-width: 622px) {
+  @media (max-width: 960px) {
+    height: 7.3rem;
+  }
+  @media (max-width: 770px) {
     width: 8.3rem;
-    height: 8.3rem;
+    height: 6.3rem;
   }
   @media (max-width: 550px) {
     width: 6.3rem;
-    height: 6.3rem;
+  }
+  @media (max-width: 420px) {
+    height: 5.3rem;
   }
 `;
 
@@ -134,6 +143,9 @@ export const UserName = styled.h2`
   font-size: 2.4rem;
   color: #ffffff;
   width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   @media (max-width: 550px) {
     font-size: 1.8rem;
   }

@@ -219,8 +219,8 @@ export const ViewMoreButton = styled.button`
 
 export const TopSearchButtons = styled.button`
   background-color: rgba(42, 42, 42, 1);
-  height: 5.5rem;
-  width: 17rem;
+  height: 4.7rem;
+  max-width: 17rem;
   display: flex;
   flex-direction: column;
   margin-top: 10%;
@@ -238,6 +238,8 @@ export const TopSearchButtons = styled.button`
   &.activeRepositoryButton {
     font-weight: 500;
     font-size: 1.9rem;
+    width: 17.4rem;
+    margin-right: 0.5%;
     @media (max-width: 940px) {
       font-size: 1.5rem;
     }
@@ -245,6 +247,8 @@ export const TopSearchButtons = styled.button`
   &.activeFavoritesButton {
     font-weight: 500;
     font-size: 1.9rem;
+    width: 17.4rem;
+    margin-left: 0.5%;
     @media (max-width: 940px) {
       font-size: 1.5rem;
     }

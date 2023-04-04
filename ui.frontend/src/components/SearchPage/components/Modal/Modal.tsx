@@ -26,22 +26,27 @@ interface ModalProps {
   isOpen: boolean;
   setModalOpen: () => void;
   user: string;
-  repositories: User | null;
 }
 
 export const Modal: FunctionComponent<ModalProps> = ({
   isOpen,
   setModalOpen,
   user,
-  repositories,
 }) => {
   const [userData, setUserData] = useState<User[]>([]);
   const [userStarred, setUserStarred] = useState<User[]>([]);
+  const [userInfos, setUserInfos] = useState<User>();
   useEffect(() => {
     if (isOpen) {
       fetch(`https://api.github.com/users/${user}/repos`)
         .then((response) => response.json())
         .then((data) => setUserData(data))
+        .catch((error) => {
+          console.error(`API error: ${error}`);
+        });
+      fetch(`https://api.github.com/users/${user}`)
+        .then((response) => response.json())
+        .then((data) => setUserInfos(data))
         .catch((error) => {
           console.error(`API error: ${error}`);
         });
@@ -97,17 +102,15 @@ export const Modal: FunctionComponent<ModalProps> = ({
     return (
       <ContainerModal>
         <CardModal>
-          {repositories && (
+          {userInfos && (
             <ContainerNameDescription>
-              <UserImage src={repositories.avatar_url} />
+              <UserImage src={userInfos.avatar_url} />
               <div>
-                <UserName>{repositories.login}</UserName>
+                <UserName>{userInfos.login}</UserName>
                 <RepositoryDescription>
-                  {repositories.bio
-                    ? repositories.bio
-                    : "Sem descrição de perfil"}
+                  {userInfos.bio ? userInfos.bio : "Sem descrição de perfil"}
                 </RepositoryDescription>
-                <UserNameDescription>{repositories.login}</UserNameDescription>
+                <UserNameDescription>{userInfos.login}</UserNameDescription>
               </div>
             </ContainerNameDescription>
           )}

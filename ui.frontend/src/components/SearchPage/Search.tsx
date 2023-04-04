@@ -17,7 +17,6 @@ import {
   ContainerInputError,
   SearchError,
   ContainerUsersRepos,
-  UserDescription,
 } from "./SearchStyled";
 import { Modal } from "./components/Modal/Modal";
 import { User } from "./types/types";
@@ -44,7 +43,7 @@ const SearchPage: FunctionComponent<SearchPageProps> = ({
       setError("Digite um nome de usuário");
       return;
     }
-    fetch(`https://api.github.com/users/${user}`)
+    fetch(`https://api.github.com/search/users?q=${user}`)
       .then((response) => {
         if (!response.ok) {
           if (response.status === 404) {
@@ -53,18 +52,24 @@ const SearchPage: FunctionComponent<SearchPageProps> = ({
             throw new Error("Erro ao buscar usuário");
           }
         }
-        setError(null);
         return response.json();
       })
       .then((data) => {
-        setRepositories(data);
-        setError(null);
+        if (data.total_count === 0) {
+          throw new Error("Usuário não encontrado, tente novamente");
+        } else {
+          setRepositories(data.items);
+          setError(null);
+        }
       })
       .catch((error) => setError(error.message));
+    if (inputRef.current) {
+      inputRef.current.value = "";
+    }
   };
 
   const [user, setUser] = useState<string>("");
-  const [repositories, setRepositories] = useState<User | null>(null);
+  const [repositories, setRepositories] = useState<User[] | null>(null);
   const [openModal, setOpenModal] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -100,34 +105,29 @@ const SearchPage: FunctionComponent<SearchPageProps> = ({
                 }}
               />
             </ContainerInputButtonSearch>
-            <ContainerUsersRepos>
-              {repositories && (
-                <CardUser>
-                  <UserImage
-                    src={repositories.avatar_url}
-                    alt='Foto de perfil'
-                  />
-                  <UserNameDescription>
-                    <UserName>{repositories.login}</UserName>
-                    <UserDescription>
-                      {repositories.bio ? repositories.bio : "Sem descrição"}
-                    </UserDescription>
-                  </UserNameDescription>
-                  <Button
-                    type='button'
-                    text='VER MAIS'
-                    onClick={() => {
-                      handleSearch(repositories.login);
-                      setOpenModal(true);
-                    }}
-                  />
-                </CardUser>
-              )}
-            </ContainerUsersRepos>
+            {repositories && (
+              <ContainerUsersRepos>
+                {repositories.map((user, index) => (
+                  <CardUser key={index}>
+                    <UserImage src={user.avatar_url} alt='Foto de perfil' />
+                    <UserNameDescription>
+                      <UserName>{user.login}</UserName>
+                    </UserNameDescription>
+                    <Button
+                      type='button'
+                      text='VER MAIS'
+                      onClick={() => {
+                        handleSearch(user.login);
+                        setOpenModal(true);
+                      }}
+                    />
+                  </CardUser>
+                ))}
+              </ContainerUsersRepos>
+            )}
             <Modal
               isOpen={openModal}
               setModalOpen={() => setOpenModal(!openModal)}
-              repositories={repositories}
               user={user}
             />
           </>
