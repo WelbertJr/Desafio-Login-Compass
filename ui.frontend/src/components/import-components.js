@@ -22,6 +22,7 @@ import "./ExperienceFragment/ExperienceFragment";
 import LoginPage from "./LoginPage/LoginPage";
 import ErrorPage401 from "./ErrorPages/ErrorPage401/ErrorPage401";
 import SuccessPage from "./Success/SuccessPage";
+import SearchPage from "./SearchPage/Search";
 //import MeuComponente from "./MeuComponente";
 //import ComponenteTeste from "./ComponenteTeste";
 import { MapTo } from "@adobe/aem-react-editable-components";
@@ -144,5 +145,10 @@ MapTo("reactapp/components/error-page")(ErrorPage401, {
 
 MapTo("reactapp/components/success-page")(SuccessPage, {
   emptyLabel: "Success Page",
+  authorAcessibility,
+});
+
+MapTo("reactapp/components/search-page")(SearchPage, {
+  emptyLabel: "Search Page",
   authorAcessibility,
 });

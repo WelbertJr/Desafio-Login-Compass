@@ -1,7 +1,7 @@
-import React, { FunctionComponent, useState } from "react";
-import { InputSearch } from "../Inputs/InputStyled";
+import React, { FunctionComponent, useRef, useState } from "react";
+import { Input } from "../Inputs/Input";
 import { Button } from "../Buttons/Buttons";
-import { LoginLogo } from "../LoginPage/LoginPageStyled";
+import { BackgroundImage, LoginLogo } from "../LoginPage/LoginPageStyled";
 import {
   ContainerSearch,
   ContainerSearchPage,
@@ -13,47 +13,135 @@ import {
   CardUser,
   UserImage,
   UserName,
-  UserDescription,
   UserNameDescription,
+  ContainerInputError,
+  SearchError,
+  ContainerUsersRepos,
 } from "./SearchStyled";
 import { Modal } from "./components/Modal/Modal";
-export const SearchPage: FunctionComponent = () => {
+import { User } from "./types/types";
+import loginIcon from "../../assets/compassuol-logo-login.png";
+import backgroundLogin from "../../assets/img-notebook.png";
+interface SearchPageProps {
+  searchTitle: string;
+  searchParagraph: string;
+  searchImage: any;
+  searchLogo: any;
+  searchButtonColor: string;
+}
+const SearchPage: FunctionComponent<SearchPageProps> = ({
+  searchTitle,
+  searchParagraph,
+  searchImage = { src: backgroundLogin },
+  searchLogo = { src: loginIcon },
+  searchButtonColor,
+}) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const handleSearch = (user: string) => {
+    setUser(user);
+    if (!user) {
+      setError("Digite um nome de usuário");
+      return;
+    }
+    fetch(`https://api.github.com/search/users?q=${user}`)
+      .then((response) => {
+        if (!response.ok) {
+          if (response.status === 404) {
+            throw new Error("Usuário não encontrado, tente novamente");
+          } else {
+            throw new Error("Erro ao buscar usuário");
+          }
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.total_count === 0) {
+          throw new Error("Usuário não encontrado, tente novamente");
+        } else {
+          setRepositories(data.items);
+          setError(null);
+        }
+      })
+      .catch((error) => setError(error.message));
+    if (inputRef.current) {
+      inputRef.current.value = "";
+    }
+  };
+
+  const [user, setUser] = useState<string>("");
+  const [repositories, setRepositories] = useState<User[] | null>(null);
   const [openModal, setOpenModal] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   return (
     <ContainerSearchPage>
       <ContainerSearch width='70%'>
         <SearchUsers>
-          <TitleSearch>Busca</TitleSearch>
-          <ParagraphSearch>
-            Para encontrar o usuário desejado digite seu nome abaixo.
-          </ParagraphSearch>
-          <ContainerInputButtonSearch>
-            <InputSearch type='text' placeholder='Ex.: Thauany' />
-            <Button type='button' text='Buscar' />
-          </ContainerInputButtonSearch>
-          <CardUser>
-            <UserImage />
-            <UserNameDescription>
-              <UserName>Nome</UserName>
-              <UserDescription>Description</UserDescription>
-            </UserNameDescription>
-            <Button
-              type='button'
-              text='VER MAIS'
-              onClick={() => setOpenModal(true)}
+          <>
+            <TitleSearch>{searchTitle ? searchTitle : "Busca"}</TitleSearch>
+            <ParagraphSearch>
+              {searchParagraph
+                ? searchParagraph
+                : "Para encontrar o usuário desejado digite seu nome abaixo."}
+            </ParagraphSearch>
+            <ContainerInputButtonSearch>
+              <ContainerInputError>
+                <Input
+                  type='text'
+                  placeholder='Ex.: Thauany'
+                  onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                    setUser(event.target.value)
+                  }
+                  inputRef={inputRef}
+                />
+                {<SearchError>{error}</SearchError>}
+              </ContainerInputError>
+              <Button
+                type='button'
+                text='Buscar'
+                bgColorSearch={searchButtonColor}
+                onClick={() => {
+                  handleSearch(user);
+                }}
+              />
+            </ContainerInputButtonSearch>
+            {repositories && (
+              <ContainerUsersRepos>
+                {repositories.map((user, index) => (
+                  <CardUser key={index}>
+                    <UserImage src={user.avatar_url} alt='Foto de perfil' />
+                    <UserNameDescription>
+                      <UserName>{user.login}</UserName>
+                    </UserNameDescription>
+                    <Button
+                      type='button'
+                      text='VER MAIS'
+                      onClick={() => {
+                        handleSearch(user.login);
+                        setOpenModal(true);
+                      }}
+                    />
+                  </CardUser>
+                ))}
+              </ContainerUsersRepos>
+            )}
+            <Modal
+              isOpen={openModal}
+              setModalOpen={() => setOpenModal(!openModal)}
+              user={user}
             />
-          </CardUser>
-          <Modal
-            isOpen={openModal}
-            setModalOpen={() => setOpenModal(!openModal)}
-          />
-          <CardUser></CardUser>
-          <CardUser></CardUser>
+          </>
         </SearchUsers>
       </ContainerSearch>
       <ContainerImage width='30%'>
-        <LoginLogo alt='Login Logo' />
+        <BackgroundImage
+          src={searchImage && searchImage.src}
+          alt='Background Image'
+        />
+        <LoginLogo src={searchLogo && searchLogo.src} alt='Login Logo' />
       </ContainerImage>
     </ContainerSearchPage>
   );
 };
+
+export default SearchPage;

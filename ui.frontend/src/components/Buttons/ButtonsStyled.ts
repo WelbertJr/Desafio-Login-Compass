@@ -2,6 +2,7 @@ import styled from "styled-components";
 interface ButtonsProps {
   bgColorLogin?: string;
   bgColorError?: string;
+  bgColorSearch?: string;
 }
 export const ButtonStyled = styled.button<ButtonsProps>`
   border: none;
@@ -115,10 +116,10 @@ export const ButtonError = styled.button<ButtonsProps>`
   }
 `;
 
-export const ButtonSearch = styled.button`
+export const ButtonSearch = styled.button<ButtonsProps>`
   width: 20%;
   margin-left: 4.1%;
-  min-height: 6.7rem;
+  height: 50%;
   border: none;
   display: flex;
   justify-content: space-evenly;
@@ -127,14 +128,16 @@ export const ButtonSearch = styled.button`
   font-family: "Poppins";
   font-weight: 700;
   font-size: 1.8rem;
-  background: #cf2e0e;
+  background: ${({ bgColorSearch }) =>
+    bgColorSearch ? bgColorSearch : "#cf2e0e"};
   box-shadow: inset 5px 5px 15px rgba(0, 0, 0, 0.15);
   border-radius: 50px;
   cursor: pointer;
   filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
 
   &:hover {
-    background-color: #f22e07;
+    background-color: ${({ bgColorSearch }) =>
+      bgColorSearch ? bgColorSearch : "#f22e07"};
     cursor: pointer;
     font-size: 2rem;
     @media (max-width: 1320px) {
@@ -142,6 +145,9 @@ export const ButtonSearch = styled.button`
     }
     @media (max-width: 960px) {
       font-size: 1.4rem;
+    }
+    @media (max-width: 768px) {
+      font-size: 0;
     }
   }
 
@@ -193,6 +199,9 @@ export const ViewMoreButton = styled.button`
   @media (max-width: 900px) {
     font-size: 1.4rem;
   }
+  @media (max-width: 800px) {
+    font-size: 1.2rem;
+  }
   @media (max-width: 720px) {
     width: 25%;
     margin-left: 10%;
@@ -210,8 +219,8 @@ export const ViewMoreButton = styled.button`
 
 export const TopSearchButtons = styled.button`
   background-color: rgba(42, 42, 42, 1);
-  height: 5.5rem;
-  width: 17rem;
+  height: 4.7rem;
+  max-width: 17rem;
   display: flex;
   flex-direction: column;
   margin-top: 10%;
@@ -229,6 +238,8 @@ export const TopSearchButtons = styled.button`
   &.activeRepositoryButton {
     font-weight: 500;
     font-size: 1.9rem;
+    width: 17.4rem;
+    margin-right: 0.5%;
     @media (max-width: 940px) {
       font-size: 1.5rem;
     }
@@ -236,6 +247,8 @@ export const TopSearchButtons = styled.button`
   &.activeFavoritesButton {
     font-weight: 500;
     font-size: 1.9rem;
+    width: 17.4rem;
+    margin-left: 0.5%;
     @media (max-width: 940px) {
       font-size: 1.5rem;
     }
@@ -282,7 +295,7 @@ export const HrButtonsTopSearch = styled.hr`
 `;
 
 export const ShareButton = styled.button`
-  width: 20.8rem;
+  max-width: 20.8rem;
   height: 4.7rem;
   display: flex;
   align-items: center;
@@ -296,6 +309,10 @@ export const ShareButton = styled.button`
   border-radius: 0.8rem;
   border: none;
   cursor: pointer;
+  @media (max-width: 1150px) {
+    max-width: 12.8rem;
+    font-size: 1.4rem;
+  }
   @media (max-width: 940px) {
     font-size: 1rem;
   }
@@ -315,7 +332,7 @@ export const ShareMiniButton = styled.button`
     border-radius: 0.8rem;
     cursor: pointer;
     border: none;
-    width: 4.4rem;
+    min-width: 4.4rem;
     height: 4rem;
   }
 `;

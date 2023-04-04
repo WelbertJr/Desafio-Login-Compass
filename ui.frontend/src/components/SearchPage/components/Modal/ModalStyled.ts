@@ -39,6 +39,11 @@ export const ContainerNameDescription = styled.div`
   div {
     display: flex;
     flex-direction: column;
+    @media (max-width: 768px) {
+      height: 10rem;
+      align-items: flex-start;
+      justify-content: center;
+    }
   }
   @media (max-width: 940px) {
     width: 25%;
@@ -49,7 +54,6 @@ export const ContainerNameDescription = styled.div`
     flex-direction: row;
     height: 20%;
     align-items: center;
-    margin: auto;
     padding-top: 7%;
   }
 `;
@@ -66,7 +70,7 @@ export const UserImage = styled.img`
   @media (max-width: 940px) {
     width: 12.4rem;
     height: 12.4rem;
-    margin: 15% 5% 6.3% 5%;
+    margin: 5% 5% 6.3% 5%;
   }
   @media (max-width: 768px) {
     margin-left: 0;
@@ -78,8 +82,12 @@ export const UserName = styled.h2`
   font-weight: 400;
   font-size: 3.2rem;
   color: #ffffff;
+  margin: auto;
   @media (max-width: 940px) {
     font-size: 2rem;
+  }
+  @media (max-width: 768px) {
+    margin: 0;
   }
 `;
 
@@ -88,8 +96,24 @@ export const RepositoryDescription = styled.p`
   font-weight: 400;
   font-size: 2rem;
   color: #8d8d8d;
+  margin: 0 4%;
+  text-align: center;
   @media (max-width: 940px) {
     font-size: 1.4rem;
+  }
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const UserNameDescription = styled.p`
+  display: none;
+  @media (max-width: 768px) {
+    display: flex;
+    font-size: 1.4rem;
+    font-family: "Poppins";
+    font-weight: 400;
+    color: #8d8d8d;
   }
 `;
 
@@ -99,7 +123,6 @@ export const RepositoriesCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 53.6rem;
   scrollbar-width: thin;
   scrollbar-color: #aaa;
   overflow: auto;
@@ -122,7 +145,7 @@ export const ContainerButtonsCardRepositories = styled.div`
     order: 3;
     height: 70%;
     margin: auto;
-    width: 90%;
+    width: 100%;
   }
 `;
 
@@ -132,11 +155,11 @@ export const ContainerButtonsTop = styled.div`
 
 export const CardRepositoriesList = styled.div`
   width: 90%;
-  min-height: 25%;
   align-items: center;
-  padding: 2%;
+  padding: 4% 2%;
   display: flex;
   border-bottom: 0.1rem solid rgba(159, 159, 159, 0.7);
+  justify-content: space-between;
 `;
 
 export const ContainerTextRepositoriesList = styled.div`
@@ -149,6 +172,9 @@ export const TitleRepositoryList = styled.h3`
   font-weight: 700;
   font-size: 1.8rem;
   color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   @media (max-width: 940px) {
     font-size: 1.2rem;
   }
@@ -160,6 +186,9 @@ export const DescriptionRepository = styled.p`
   font-size: 1.8rem;
   line-height: 2.7rem;
   color: #8d8d8d;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   @media (max-width: 940px) {
     font-size: 1rem;
   }

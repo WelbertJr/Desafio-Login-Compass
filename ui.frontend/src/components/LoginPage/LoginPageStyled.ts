@@ -104,4 +104,7 @@ export const LoginLogo = styled.img`
   margin: 0;
   width: 34.9rem;
   height: 9.4rem;
+  @media (max-width: 1167px) {
+    width: 31.9rem;
+  }
 `;

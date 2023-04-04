@@ -4,10 +4,11 @@ import { InputUser, Label, InputPassword, InputSearch } from "./InputStyled";
 
 interface InputProps {
   type: string;
-  placeholder: string;
+  placeholder?: string;
   value?: string;
   label?: string;
   isFormValid?: boolean;
+  inputRef?: any;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 export const Input: FunctionComponent<InputProps> = ({
@@ -16,6 +17,7 @@ export const Input: FunctionComponent<InputProps> = ({
   label,
   value,
   isFormValid,
+  inputRef,
   onChange,
 }): any => {
   if (placeholder === "Usuário")
@@ -51,6 +53,7 @@ export const Input: FunctionComponent<InputProps> = ({
         autoComplete='true'
         value={value}
         onChange={onChange}
+        ref={inputRef}
       />
     );
   }
