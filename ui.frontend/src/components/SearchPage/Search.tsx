@@ -119,6 +119,7 @@ const SearchPage: FunctionComponent<SearchPageProps> = ({
                       onClick={() => {
                         handleSearch(user.login);
                         setOpenModal(true);
+                        document.title = "Compass - User";
                       }}
                     />
                   </CardUser>

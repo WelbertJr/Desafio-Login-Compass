@@ -188,15 +188,15 @@ export const ViewMoreButton = styled.button`
   &:hover {
     cursor: pointer;
     font-size: 1.7rem;
-    @media (max-width: 900px) {
-      font-size: 1.5rem;
+    @media (max-width: 1170px) {
+      font-size: 1.42rem;
     }
     @media (max-width: 720px) {
       margin-left: 20%;
       font-size: 1.2rem;
     }
   }
-  @media (max-width: 900px) {
+  @media (max-width: 1170px) {
     font-size: 1.4rem;
   }
   @media (max-width: 800px) {

@@ -89,7 +89,7 @@ export const Clock = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
+    const timerId = setTimeout(() => {
       const date = new Date();
       setTime(date.toLocaleTimeString());
       if (!time) {
@@ -99,6 +99,10 @@ export const Clock = () => {
       setClock(true);
     }, 1000);
     getDate();
+
+    return () => {
+      clearTimeout(timerId);
+    };
   }, [time, getDate, setClock, setClockState, setTime]);
 
   return (

@@ -42,18 +42,18 @@ export const Modal: FunctionComponent<ModalProps> = ({
         .then((response) => response.json())
         .then((data) => setUserData(data))
         .catch((error) => {
-          console.error(`API error: ${error}`);
+          console.error(`API error user/repos: ${error}`);
         });
       fetch(`https://api.github.com/users/${user}`)
         .then((response) => response.json())
         .then((data) => setUserInfos(data))
         .catch((error) => {
-          console.error(`API error: ${error}`);
+          console.error(`API error users/user: ${error}`);
         });
       fetch(`https://api.github.com/users/${user}/starred`)
         .then((response) => {
           if (!response.ok) {
-            throw new Error(`API error: ${response.status}`);
+            throw new Error(`API error user/starred: ${response.status}`);
           }
           return response.json();
         })
@@ -189,7 +189,14 @@ export const Modal: FunctionComponent<ModalProps> = ({
               <IoIosArrowDown color={"white"} size={"2.4rem"} />
             </ContainerViewMore>
           </ContainerButtonsCardRepositories>
-          <Button type='button' text='VOLTAR' onClick={setModalOpen} />
+          <Button
+            type='button'
+            text='VOLTAR'
+            onClick={() => {
+              setModalOpen();
+              document.title = "Compass - Search";
+            }}
+          />
         </CardModal>
       </ContainerModal>
     );

@@ -27,13 +27,15 @@ import { PopUp } from "./Components/PopUp/PopUp";
 import { Btncontainer } from "./Components/PopUp/PopUpStyled";
 import loginIcon from "../../assets/compassuol-logo-login.png";
 import backgroundLogin from "../../assets/img-notebook.png";
-interface LoginPageProps {
+export interface LoginPageProps {
   loginTitle: string;
   loginParagraph: string;
   loginImage: any;
   loginLogo: any;
   loginButtonColor: string;
+  isLoggedIn: boolean;
 }
+
 const LoginPage: FunctionComponent<LoginPageProps> = ({
   loginTitle,
   loginParagraph,
@@ -53,17 +55,16 @@ const LoginPage: FunctionComponent<LoginPageProps> = ({
       localStorage.getItem("userPassword") != null
     ) {
       setTimeout(() => {
-        // eslint-disable-next-line no-lone-blocks
-        {
-          if (
-            localStorage.getItem("userName") != null &&
-            localStorage.getItem("userPassword") != null
-          ) {
-            history.push("./success-page.html");
-          }
+        if (
+          localStorage.getItem("userName") != null &&
+          localStorage.getItem("userPassword") != null
+        ) {
+          history.push("./success-page.html");
+          document.title = "Compass - Home";
         }
       }, 5500);
     }
+    document.title = "Compass - Login";
   }, [history]);
 
   const handleSignUpForm = (event: FormEvent) => {
@@ -76,7 +77,11 @@ const LoginPage: FunctionComponent<LoginPageProps> = ({
     setIsFormValid(true);
     localStorage.setItem("userName", name);
     localStorage.setItem("userPassword", password);
-    history.push("/content/reactapp/us/en/success-page.html");
+    history.push({
+      pathname: "./success-page.html",
+      state: { isLoggedIn: true },
+    });
+    document.title = "Compass - Home";
   };
   if (
     localStorage.getItem("userName") != null &&

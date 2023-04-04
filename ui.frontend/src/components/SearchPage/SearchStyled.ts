@@ -107,7 +107,7 @@ export const UserImage = styled.img`
   width: 9.3rem;
   height: 9.3rem;
   border-radius: 50%;
-  @media (max-width: 960px) {
+  @media (max-width: 1342px) {
     height: 7.3rem;
   }
   @media (max-width: 770px) {

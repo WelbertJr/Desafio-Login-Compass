@@ -12,11 +12,16 @@ import { Footer } from "./components/Footer/Footer";
 import React from "react";
 import BgSuccessImage from "../../assets/uol-ball-transparent.png";
 import IconSuccess from "../../assets/compassuol-logo-success.png";
+import { LoginPageProps } from "../LoginPage/LoginPage";
+import { useHistory } from "react-router-dom";
 interface SuccessPageProps {
   successLogo: any;
   successImage: any;
   successColorTitleMultifield: string;
   successTexts: MultifieldTexts[];
+  location?: {
+    state: LoginPageProps;
+  };
 }
 interface MultifieldTexts {
   successTitleMultifield: string;
@@ -44,7 +49,17 @@ const SuccessPage: FunctionComponent<SuccessPageProps> = ({
   successImage = { src: BgSuccessImage },
   successLogo = { src: IconSuccess },
   successTexts = defaultTexts,
+  location,
 }) => {
+  let history = useHistory();
+  const isLoggedIn =
+    (location && location.state && location.state.isLoggedIn) ??
+    (localStorage.getItem("userName") != null &&
+      localStorage.getItem("userPassword") != null);
+  if (!isLoggedIn) {
+    history.push("./error-page-401.html");
+    document.title = "Error Page - 401";
+  }
   return (
     <SuccessContainer>
       <Header logo={successLogo && successLogo.src} />
@@ -57,9 +72,8 @@ const SuccessPage: FunctionComponent<SuccessPageProps> = ({
         </ContainerSuccessImage>
         <SuccessText>
           {successTexts.map((item, index) => (
-            <>
+            <div key={index}>
               <Paragraph
-                key={index}
                 fontSize={item.checkboxMultifield ? "2.8rem" : "5rem"}
                 color={item.successColorTitleMultifield}
                 text={item.successTitleMultifield}
@@ -72,7 +86,7 @@ const SuccessPage: FunctionComponent<SuccessPageProps> = ({
                 text={item.successDescriptionMultifield}
                 fontWeight='400'
               />
-            </>
+            </div>
           ))}
         </SuccessText>
       </SuccessMain>

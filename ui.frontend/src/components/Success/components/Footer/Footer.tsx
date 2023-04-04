@@ -21,8 +21,13 @@ export function Footer() {
     timeout.current = setTimeout(() => {
       setTime((t) => t - 1);
     }, 1000);
+    return () => {
+      clearTimeout(timeout.current);
+    };
+  }, [time]);
+  useEffect(() => {
     if (time === 0) {
-      history.push("/content/reactapp/us/en/home.html");
+      history.push("./home.html");
     }
   }, [time, history]);
   return (
@@ -49,7 +54,8 @@ export function Footer() {
         <Button
           text='Acessar Busca'
           onClick={() => {
-            history.push("/content/reactapp/us/en/search-page.html");
+            history.push("./search-page.html");
+            document.title = "Compass - Search";
           }}
           type='button'
         />
@@ -57,7 +63,7 @@ export function Footer() {
           className='logout'
           text='Logout'
           onClick={() => {
-            history.push("/content/reactapp/us/en/home.html");
+            history.push("./home.html");
           }}
           type='button'
         />

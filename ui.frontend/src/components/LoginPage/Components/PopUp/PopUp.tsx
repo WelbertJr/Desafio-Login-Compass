@@ -1,17 +1,23 @@
 import { Main, Main2, MSG, MainText, WarningText } from "./PopUpStyled";
 import { Button } from "../../../Buttons/Buttons";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export const PopUp = () => {
   const [countdown, setCountdown] = useState(5);
-  const [startCountdown, setStartCountdown] = useState(false);
 
-  if (!startCountdown) {
-    setStartCountdown(true);
-    setInterval(() => {
-      setCountdown((state) => state - 1);
-    }, 1000);
-  }
+  useEffect(() => {
+    let intervalId: any;
+    let startCountdown = false;
+
+    if (!startCountdown) {
+      startCountdown = true;
+      intervalId = setInterval(() => {
+        setCountdown((state) => state - 1);
+      }, 1000);
+    }
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   function deleter() {
     localStorage.removeItem("userName");
@@ -31,4 +37,3 @@ export const PopUp = () => {
     </Main>
   );
 };
-

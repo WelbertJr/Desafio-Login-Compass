@@ -32,7 +32,7 @@ const ErrorPage401: FunctionComponent<ErrorPageProps> = ({
           text='Voltar para página inicial'
           bgColorError={errorButtonColor}
           onClick={() => {
-            history.push("/content/reactapp/us/en/home.html");
+            history.push("./home.html");
           }}
         />
       </ContainerError>
