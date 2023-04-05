@@ -48,7 +48,7 @@ const LoginPage: FunctionComponent<LoginPageProps> = ({
   const [error, setError] = useState<string>("");
   const [isFormValid, setIsFormValid] = useState<boolean>(true);
 
-  let history = useHistory();
+  const history = useHistory();
   useEffect(() => {
     if (
       localStorage.getItem("userName") != null &&
@@ -81,7 +81,6 @@ const LoginPage: FunctionComponent<LoginPageProps> = ({
       pathname: "./success-page.html",
       state: { isLoggedIn: true },
     });
-    document.title = "Compass - Home";
   };
   if (
     localStorage.getItem("userName") != null &&

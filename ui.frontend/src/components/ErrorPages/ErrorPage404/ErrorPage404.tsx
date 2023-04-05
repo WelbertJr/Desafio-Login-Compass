@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useLayoutEffect } from "react";
 import { ContainerGray } from "../../LoginPage/Components/ContainerGray/ContainerGray";
 import {
   ContainerError,
@@ -6,7 +6,7 @@ import {
   ErrorParagraph,
 } from "../ErrorPagesStyled";
 import { Button } from "../../Buttons/Buttons";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 interface ErrorPage404Props {
   errorTitle: number;
   errorParagraph: string;
@@ -17,7 +17,16 @@ export const ErrorPage404: FunctionComponent<ErrorPage404Props> = ({
   errorParagraph,
   errorButtonColor,
 }) => {
-  let history = useHistory();
+  const history = useHistory();
+  const location = useLocation();
+  useLayoutEffect(() => {
+    const regex = /^\/content\/reactapp\/us\/en\/(home|search-page)\.html$/;
+    if (!regex.test(location.pathname)) {
+      console.log("Redirecting to 404 page");
+      history.push("/content/reactapp/us/en/error-page-404.html");
+    }
+    document.title = "Compass - Login";
+  }, [location, history]);
   return (
     <ContainerGray width='100%'>
       <ContainerError>

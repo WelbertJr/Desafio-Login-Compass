@@ -22,12 +22,17 @@ import { Modal } from "./components/Modal/Modal";
 import { User } from "./types/types";
 import loginIcon from "../../assets/compassuol-logo-login.png";
 import backgroundLogin from "../../assets/img-notebook.png";
+import { LoginPageProps } from "../LoginPage/LoginPage";
+import { useHistory } from "react-router-dom";
 interface SearchPageProps {
   searchTitle: string;
   searchParagraph: string;
   searchImage: any;
   searchLogo: any;
   searchButtonColor: string;
+  location?: {
+    state: LoginPageProps;
+  };
 }
 const SearchPage: FunctionComponent<SearchPageProps> = ({
   searchTitle,
@@ -35,7 +40,17 @@ const SearchPage: FunctionComponent<SearchPageProps> = ({
   searchImage = { src: backgroundLogin },
   searchLogo = { src: loginIcon },
   searchButtonColor,
+  location,
 }) => {
+  const history = useHistory();
+  const isLoggedIn =
+    (location && location.state && location.state.isLoggedIn) ??
+    (localStorage.getItem("userName") != null &&
+      localStorage.getItem("userPassword") != null);
+  if (!isLoggedIn) {
+    history.push("./error-page-401.html");
+    document.title = "Error Page - 401";
+  }
   const inputRef = useRef<HTMLInputElement>(null);
   const handleSearch = (user: string) => {
     setUser(user);

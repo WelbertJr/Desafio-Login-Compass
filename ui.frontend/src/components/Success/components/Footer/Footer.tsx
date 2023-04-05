@@ -7,11 +7,13 @@ import {
 } from "./FooterStyled";
 import { Button } from "../../../Buttons/Buttons";
 import { useHistory } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, FunctionComponent } from "react";
 import { Timer } from "../Timer/Timer";
 import React from "react";
-
-export function Footer() {
+interface FooterProps {
+  isLoggedIn: boolean;
+}
+export const Footer: FunctionComponent<FooterProps> = () => {
   const [time, setTime] = useState(600);
   const timeout = useRef<any>(0);
   let history = useHistory();
@@ -54,7 +56,10 @@ export function Footer() {
         <Button
           text='Acessar Busca'
           onClick={() => {
-            history.push("./search-page.html");
+            history.push({
+              pathname: "./search-page.html",
+              state: { isLoggedIn: true },
+            });
             document.title = "Compass - Search";
           }}
           type='button'
@@ -70,4 +75,4 @@ export function Footer() {
       </FooterButtons>
     </FooterBody>
   );
-}
+};

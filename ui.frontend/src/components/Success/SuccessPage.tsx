@@ -51,7 +51,7 @@ const SuccessPage: FunctionComponent<SuccessPageProps> = ({
   successTexts = defaultTexts,
   location,
 }) => {
-  let history = useHistory();
+  const history = useHistory();
   const isLoggedIn =
     (location && location.state && location.state.isLoggedIn) ??
     (localStorage.getItem("userName") != null &&
@@ -90,7 +90,7 @@ const SuccessPage: FunctionComponent<SuccessPageProps> = ({
           ))}
         </SuccessText>
       </SuccessMain>
-      <Footer />
+      <Footer isLoggedIn={true} />
     </SuccessContainer>
   );
 };

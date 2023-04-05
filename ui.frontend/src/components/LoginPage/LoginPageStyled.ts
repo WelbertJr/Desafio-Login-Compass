@@ -1,10 +1,18 @@
 import styled from "styled-components";
 import { Container } from "./Components/ContainerGray/ContainerGrayStyled";
+const isAuthoring = () => {
+  const href =
+    window.location !== window.parent.location
+      ? document.referrer
+      : document.location.href;
 
+  return href.includes("/editor.html");
+};
 export const Main = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: ${isAuthoring() ? "93.7rem" : "100vh"};
   @media (max-width: 768px) {
     width: 100%;
     align-items: flex-start;
@@ -49,11 +57,10 @@ export const SubContainerLeft = styled.div`
   justify-content: flex-start;
   @media (max-width: 768px) {
     padding: 0;
-    margin-top: 15%;
+    margin-top: 1%;
   }
   @media (max-width: 450px) {
     padding: 5%;
-    margin-top: 15%;
   }
 `;
 
@@ -76,6 +83,9 @@ export const Form = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
+  @media (max-width: 768px) {
+    margin-top: 10%;
+  }
 `;
 
 export const ContainerRight = styled(Container)`
