@@ -28,12 +28,12 @@ import { Btncontainer } from "./Components/PopUp/PopUpStyled";
 import loginIcon from "../../assets/compassuol-logo-login.png";
 import backgroundLogin from "../../assets/img-notebook.png";
 export interface LoginPageProps {
-  loginTitle: string;
-  loginParagraph: string;
-  loginImage: any;
-  loginLogo: any;
-  loginButtonColor: string;
-  isLoggedIn: boolean;
+  loginTitle?: string;
+  loginParagraph?: string;
+  loginImage?: { src: string };
+  loginLogo?: { src: string };
+  loginButtonColor?: string;
+  isLoggedIn?: boolean;
 }
 
 const LoginPage: FunctionComponent<LoginPageProps> = ({

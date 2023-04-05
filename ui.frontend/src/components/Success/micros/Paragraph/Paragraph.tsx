@@ -4,7 +4,7 @@ import { ParagraphP, ParagraphH1 } from "./ParagraphStyled";
 interface ParagraphProps {
   fontSize: string;
   color?: string;
-  fontWeight: string;
+  fontWeight?: string;
   padding?: string;
   text?: string;
   children?: ReactNode;

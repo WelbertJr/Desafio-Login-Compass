@@ -3,7 +3,7 @@ import { FunctionComponent } from "react";
 import { InputUser, Label, InputPassword, InputSearch } from "./InputStyled";
 
 interface InputProps {
-  type: string;
+  type?: string;
   placeholder?: string;
   value?: string;
   label?: string;
@@ -23,7 +23,7 @@ export const Input: FunctionComponent<InputProps> = ({
   if (placeholder === "Usuário")
     return (
       <>
-        <Label>{label}</Label>
+        <Label htmlFor='input-user'>{label}</Label>
         <InputUser
           type={type}
           placeholder={placeholder}
@@ -31,6 +31,7 @@ export const Input: FunctionComponent<InputProps> = ({
           value={value}
           isFormValid={isFormValid}
           onChange={onChange}
+          id='input-user'
         />
       </>
     );

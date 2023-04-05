@@ -15,10 +15,10 @@ import IconSuccess from "../../assets/compassuol-logo-success.png";
 import { LoginPageProps } from "../LoginPage/LoginPage";
 import { useHistory } from "react-router-dom";
 interface SuccessPageProps {
-  successLogo: any;
-  successImage: any;
-  successColorTitleMultifield: string;
-  successTexts: MultifieldTexts[];
+  successLogo?: { src: string };
+  successImage?: { src: string };
+  successColorTitleMultifield?: string;
+  successTexts?: MultifieldTexts[];
   location?: {
     state: LoginPageProps;
   };

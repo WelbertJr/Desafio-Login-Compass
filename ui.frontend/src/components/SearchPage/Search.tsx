@@ -25,11 +25,11 @@ import backgroundLogin from "../../assets/img-notebook.png";
 import { LoginPageProps } from "../LoginPage/LoginPage";
 import { useHistory } from "react-router-dom";
 interface SearchPageProps {
-  searchTitle: string;
-  searchParagraph: string;
-  searchImage: any;
-  searchLogo: any;
-  searchButtonColor: string;
+  searchTitle?: string;
+  searchParagraph?: string;
+  searchImage?: { src: string };
+  searchLogo?: { src: string };
+  searchButtonColor?: string;
   location?: {
     state: LoginPageProps;
   };
