@@ -7,7 +7,7 @@ class App extends Page {
       "/home",
       "/search-page",
       "/success-page",
-      "/error-page-401.html",
+      "/error-page-401",
     ];
     if (
       !allowedPaths.some(

@@ -33,7 +33,6 @@ export interface LoginPageProps {
   loginImage?: { src: string };
   loginLogo?: { src: string };
   loginButtonColor?: string;
-  isLoggedIn?: boolean;
 }
 
 const LoginPage: FunctionComponent<LoginPageProps> = ({
@@ -59,7 +58,10 @@ const LoginPage: FunctionComponent<LoginPageProps> = ({
           localStorage.getItem("userName") != null &&
           localStorage.getItem("userPassword") != null
         ) {
-          history.push("./success-page.html");
+          history.push({
+            pathname: "./success-page.html",
+            state: { isLoggedIn: true },
+          });
           document.title = "Compass - Home";
         }
       }, 5500);

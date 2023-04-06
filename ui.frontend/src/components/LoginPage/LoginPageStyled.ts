@@ -1,13 +1,6 @@
 import styled from "styled-components";
 import { Container } from "./Components/ContainerGray/ContainerGrayStyled";
-const isAuthoring = () => {
-  const href =
-    window.location !== window.parent.location
-      ? document.referrer
-      : document.location.href;
-
-  return href.includes("/editor.html");
-};
+import { isAuthoring } from "../../utils/isAuthoring";
 export const Main = styled.div`
   display: flex;
   justify-content: center;

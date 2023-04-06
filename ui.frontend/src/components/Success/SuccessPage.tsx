@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { Header } from "./components/Header/Header";
 import { Paragraph } from "./micros/Paragraph/Paragraph";
 import {
@@ -12,22 +12,22 @@ import { Footer } from "./components/Footer/Footer";
 import React from "react";
 import BgSuccessImage from "../../assets/uol-ball-transparent.png";
 import IconSuccess from "../../assets/compassuol-logo-success.png";
-import { LoginPageProps } from "../LoginPage/LoginPage";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+import { isAuthoring } from "../../utils/isAuthoring";
 interface SuccessPageProps {
   successLogo?: { src: string };
   successImage?: { src: string };
   successColorTitleMultifield?: string;
   successTexts?: MultifieldTexts[];
-  location?: {
-    state: LoginPageProps;
-  };
 }
 interface MultifieldTexts {
   successTitleMultifield: string;
   successColorTitleMultifield: string;
   successDescriptionMultifield: string;
   checkboxMultifield: boolean;
+}
+interface LocationProps {
+  state: { isLoggedIn: boolean };
 }
 
 const defaultTexts = [
@@ -49,17 +49,20 @@ const SuccessPage: FunctionComponent<SuccessPageProps> = ({
   successImage = { src: BgSuccessImage },
   successLogo = { src: IconSuccess },
   successTexts = defaultTexts,
-  location,
 }) => {
   const history = useHistory();
-  const isLoggedIn =
-    (location && location.state && location.state.isLoggedIn) ??
-    (localStorage.getItem("userName") != null &&
-      localStorage.getItem("userPassword") != null);
-  if (!isLoggedIn) {
-    history.push("./error-page-401.html");
-    document.title = "Error Page - 401";
-  }
+  const { state: location } = useLocation<LocationProps>();
+  useEffect(() => {
+    if (isAuthoring()) {
+      return;
+    } else {
+      if (!location) {
+        history.push("./error-page-401.html");
+        document.title = "Error Page - 401";
+      }
+    }
+  }, [history, location]);
+
   return (
     <SuccessContainer>
       <Header logo={successLogo && successLogo.src} />

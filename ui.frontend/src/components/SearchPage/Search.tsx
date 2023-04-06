@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useRef, useState } from "react";
+import React, { FunctionComponent, useEffect, useRef, useState } from "react";
 import { Input } from "../Inputs/Input";
 import { Button } from "../Buttons/Buttons";
 import { BackgroundImage, LoginLogo } from "../LoginPage/LoginPageStyled";
@@ -22,17 +22,17 @@ import { Modal } from "./components/Modal/Modal";
 import { User } from "./types/types";
 import loginIcon from "../../assets/compassuol-logo-login.png";
 import backgroundLogin from "../../assets/img-notebook.png";
-import { LoginPageProps } from "../LoginPage/LoginPage";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+import { isAuthoring } from "../../utils/isAuthoring";
 interface SearchPageProps {
   searchTitle?: string;
   searchParagraph?: string;
   searchImage?: { src: string };
   searchLogo?: { src: string };
   searchButtonColor?: string;
-  location?: {
-    state: LoginPageProps;
-  };
+}
+interface LocationProps {
+  state: { isLoggedIn: boolean };
 }
 const SearchPage: FunctionComponent<SearchPageProps> = ({
   searchTitle,
@@ -40,17 +40,19 @@ const SearchPage: FunctionComponent<SearchPageProps> = ({
   searchImage = { src: backgroundLogin },
   searchLogo = { src: loginIcon },
   searchButtonColor,
-  location,
 }) => {
   const history = useHistory();
-  const isLoggedIn =
-    (location && location.state && location.state.isLoggedIn) ??
-    (localStorage.getItem("userName") != null &&
-      localStorage.getItem("userPassword") != null);
-  if (!isLoggedIn) {
-    history.push("./error-page-401.html");
-    document.title = "Error Page - 401";
-  }
+  const { state: location } = useLocation<LocationProps>();
+  useEffect(() => {
+    if (isAuthoring()) {
+      return;
+    } else {
+      if (!location) {
+        history.push("./error-page-401.html");
+        document.title = "Error Page - 401";
+      }
+    }
+  }, [history, location]);
   const inputRef = useRef<HTMLInputElement>(null);
   const handleSearch = (user: string) => {
     setUser(user);

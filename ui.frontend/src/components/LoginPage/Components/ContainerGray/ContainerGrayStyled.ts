@@ -1,16 +1,9 @@
 import styled from "styled-components";
-
+import { isAuthoring } from "../../../../utils/isAuthoring";
 interface ContainerProps {
   width: string;
 }
-const isAuthoring = () => {
-  const href =
-    window.location !== window.parent.location
-      ? document.referrer
-      : document.location.href;
 
-  return href.includes("/editor.html");
-};
 export const Container = styled.div<ContainerProps>`
   display: flex;
   justify-content: center;
