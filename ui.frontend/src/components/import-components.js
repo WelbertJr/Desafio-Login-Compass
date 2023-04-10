@@ -18,10 +18,13 @@ import withAsyncImport from "../utils/withAsyncImport";
 import "./Page/Page";
 import "./Container/Container";
 import "./ExperienceFragment/ExperienceFragment";
-import "./XxXxx";
-import MeuComponente from "./MeuComponente";
-import "./ComponenteTeste";
-
+//import "./XxXxx";
+import LoginPage from "./LoginPage/LoginPage";
+import ErrorPage401 from "./ErrorPages/ErrorPage401/ErrorPage401";
+import SuccessPage from "./Success/SuccessPage";
+import SearchPage from "./SearchPage/Search";
+//import MeuComponente from "./MeuComponente";
+//import ComponenteTeste from "./ComponenteTeste";
 import { MapTo } from "@adobe/aem-react-editable-components";
 
 import { CarouselV1IsEmptyFn } from "@adobe/aem-core-components-react-spa/dist/isEmptyFunctions";
@@ -63,12 +66,12 @@ const LazyTextComponent = withAsyncImport(() => import(`./Text/Text`));
 const TitleV2 = withAsyncImport(() =>
   import(
     `@adobe/aem-core-components-react-base/dist/authoring/title/v2/TitleV2`
-  ),
+  )
 );
 const CarouselV1 = withAsyncImport(() =>
   import(
     `@adobe/aem-core-components-react-spa/dist/container/carousel/v1/CarouselV1`
-  ),
+  )
 );
 
 MapTo("reactapp/components/download")(DownloadV1, {
@@ -120,7 +123,32 @@ MapTo("reactapp/components/text")(LazyTextComponent, TextEditConfig);
 
 const authorAcessibility = { isEmpty: (props) => !props.any };
 
-MapTo("reactapp/components/meu-componente")(MeuComponente, {
+/*MapTo("reactapp/components/meu-componente")(MeuComponente, {
   emptyLabel: "Meu Componente",
+  authorAcessibility,
+});*/
+
+/*MapTo("reactapp/components/componente-teste")(ComponenteTeste, {
+  emptyLabel: "Componente Teste",
+  authorAcessibility,
+});*/
+
+MapTo("reactapp/components/login-page")(LoginPage, {
+  emptyLabel: "Login Page",
+  authorAcessibility,
+});
+
+MapTo("reactapp/components/error-page")(ErrorPage401, {
+  emptyLabel: "Error Page",
+  authorAcessibility,
+});
+
+MapTo("reactapp/components/success-page")(SuccessPage, {
+  emptyLabel: "Success Page",
+  authorAcessibility,
+});
+
+MapTo("reactapp/components/search-page")(SearchPage, {
+  emptyLabel: "Search Page",
   authorAcessibility,
 });

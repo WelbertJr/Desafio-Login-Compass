@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:lastModified="{Date}2022-06-28T14:28:27.696-03:00"
+        cq:lastModified="{Date}2023-04-06T12:43:19.023-03:00"
         cq:lastModifiedBy="admin"
         cq:template="/conf/reactapp/settings/wcm/templates/spa-page-template"
         jcr:primaryType="cq:PageContent"
-        jcr:title="React App Home Page"
-        sling:resourceType="reactapp/components/page">
+        jcr:title="Login Page"
+        sling:resourceType="reactapp/components/page"
+        pwaCachestrategy="staleWhileRevalidate"
+        pwaDisplay="standalone"
+        pwaOrientation="any">
         <root
             jcr:primaryType="nt:unstructured"
             sling:resourceType="wcm/foundation/components/responsivegrid">
@@ -15,8 +18,6 @@
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="wcm/foundation/components/responsivegrid">
                 <xx_xxx
-                    jcr:created="{Date}2022-03-14T12:43:48.774-03:00"
-                    jcr:createdBy="admin"
                     jcr:lastModified="{Date}2022-03-14T12:44:52.185-03:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
@@ -24,8 +25,6 @@
                     checkbox="{Boolean}true"
                     text="XXXXXXXXXXXXXXX"/>
                 <xx_xxx_1436178817
-                    jcr:created="{Date}2022-03-14T12:45:05.097-03:00"
-                    jcr:createdBy="admin"
                     jcr:lastModified="{Date}2022-03-14T12:51:28.216-03:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
@@ -33,21 +32,30 @@
                     checkbox="{Boolean}false"
                     text="AAAAAAAAAAAAAAAA"/>
                 <xx_xxx_1212631023
-                    jcr:created="{Date}2022-03-14T12:51:34.461-03:00"
-                    jcr:createdBy="admin"
                     jcr:lastModified="{Date}2022-03-14T12:51:34.461-03:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="reactapp/components/xx-xxx"/>
                 <meu_componente
-                    jcr:created="{Date}2022-06-28T14:27:19.359-03:00"
-                    jcr:createdBy="admin"
                     jcr:lastModified="{Date}2022-06-28T14:28:27.694-03:00"
                     jcr:lastModifiedBy="admin"
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="reactapp/components/meu-componente"
                     text="XXXXXXXXXXXXXXX"/>
+                <componente_teste
+                    jcr:lastModified="{Date}2023-04-04T18:06:50.078-03:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="reactapp/components/componente-teste"/>
+                <login_page
+                    jcr:lastModified="{Date}2023-04-06T12:43:19.015-03:00"
+                    jcr:lastModifiedBy="admin"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="reactapp/components/login-page"/>
             </responsivegrid>
         </root>
+        <image jcr:primaryType="nt:unstructured">
+            <file/>
+        </image>
     </jcr:content>
 </jcr:root>

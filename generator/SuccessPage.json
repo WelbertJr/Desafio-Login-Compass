@@ -1,0 +1,98 @@
+{
+  "project-settings": {
+    "code-owner": "React App",
+    "bundle-path": "../core/src/main/java",
+    "test-path": "../core/src/test/java",
+    "apps-path": "../ui.apps/src/main/content/jcr_root/apps",
+    "component-path": "reactapp",
+    "model-interface-pkg": "com.reactapp.core.models",
+    "model-impl-pkg": "com.reactapp.core.models.impl"
+  },
+  "name": "success-page",
+  "title": "Página de Sucesso",
+  "group": "React App - Content",
+  "type": "components",
+  "options": {
+    "js": false,
+    "jstxt": false,
+    "css": false,
+    "csstxt": false,
+    "html": false,
+    "html-content": false,
+    "slingmodel": true,
+    "testclass": false,
+    "junit-major-version": 5,
+    "content-exporter": true,
+    "model-adaptables": ["request"],
+    "generic-javadoc": false,
+    "properties-tabs": [
+      {
+        "id": "tab-0",
+        "label": "Imagens",
+        "fields": ["successLogo", "successImage"]
+      },
+      {
+        "id": "tab-1",
+        "label": "Textos",
+        "fields": ["successTexts"]
+      }
+    ],
+    "properties": [
+      {
+        "field": "successLogo",
+        "label": "Escolha uma logo para a página:",
+        "type": "image",
+        "json-expose": true,
+        "json-property": "successLogo"
+      },
+      {
+        "field": "successImage",
+        "label": "Escolha uma imagem para a página:",
+        "type": "image",
+        "json-expose": true,
+        "json-property": "successImage"
+      },
+      {
+        "field": "successTexts",
+        "type": "multifield",
+        "label": "Título com descrição:",
+        "model-name": "successTitleDescriptionModel",
+        "use-existing-model": false,
+        "json-expose": true,
+        "items": [
+          {
+            "field": "successTitleMultifield",
+            "label": "Digite um título:",
+            "type": "textfield",
+            "json-expose": true,
+            "json-property": "successTitleMultifield"
+          },
+          {
+            "field": "successColorTitleMultifield",
+            "label": "Ecolha a cor do título acima:",
+            "type": "textfield",
+            "json-expose": true,
+            "json-property": "successColorTitleMultifield"
+          },
+          {
+            "field": "checkboxMultifield",
+            "type": "checkbox",
+            "json-expose": true,
+            "json-property": "checkboxMultifield",
+            "attributes": {
+              "value": "{Boolean}true",
+              "text": "Desejo um título menor!"
+            }
+          },
+          {
+            "field": "successDescriptionMultifield",
+            "label": "Digite uma descrição:",
+            "type": "textfield",
+            "json-expose": true,
+            "json-property": "successDescriptionMultifield"
+          }
+        ]
+      }
+    ]
+  }
+}
