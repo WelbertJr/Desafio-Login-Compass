@@ -24,6 +24,7 @@ import loginIcon from "../../assets/compassuol-logo-login.png";
 import backgroundLogin from "../../assets/img-notebook.png";
 import { useHistory, useLocation } from "react-router-dom";
 import { isAuthoring } from "../../utils/isAuthoring";
+
 interface SearchPageProps {
   searchTitle?: string;
   searchParagraph?: string;

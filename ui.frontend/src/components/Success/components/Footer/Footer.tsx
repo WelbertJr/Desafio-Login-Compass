@@ -15,16 +15,19 @@ interface FooterProps {
 }
 export const Footer: FunctionComponent<FooterProps> = () => {
   const [time, setTime] = useState(600);
-  const timeout = useRef<any>(0);
-  let history = useHistory();
+  const timeout = useRef<NodeJS.Timeout | null>(null);
+  const history = useHistory();
 
   useEffect(() => {
-    clearTimeout(timeout.current);
-    timeout.current = setTimeout(() => {
+    clearTimeout(timeout.current!);
+    const timer = setTimeout(() => {
       setTime((t) => t - 1);
     }, 1000);
+    timeout.current = timer;
     return () => {
-      clearTimeout(timeout.current);
+      if (timeout.current) {
+        clearTimeout(timeout.current);
+      }
     };
   }, [time]);
   useEffect(() => {

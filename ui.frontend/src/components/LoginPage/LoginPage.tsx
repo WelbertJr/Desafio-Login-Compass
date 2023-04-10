@@ -83,6 +83,7 @@ const LoginPage: FunctionComponent<LoginPageProps> = ({
       pathname: "./success-page.html",
       state: { isLoggedIn: true },
     });
+    document.title = "Compass - Home";
   };
   if (
     localStorage.getItem("userName") != null &&

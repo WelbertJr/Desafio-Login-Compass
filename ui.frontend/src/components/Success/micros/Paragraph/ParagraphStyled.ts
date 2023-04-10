@@ -9,23 +9,6 @@ interface TextParagraphProps {
   children: ReactNode;
 }
 
-export const ParagraphH2 = styled.h2<TextParagraphProps>`
-  font-size: ${({ fontSize }) => fontSize};
-  font-weight: ${({ fontWeight }) => fontWeight};
-  ${({ color }) => (color ? color : "#c12d18")};
-  padding: ${({ padding }) => padding};
-  font-family: "Poppins";
-  @media (max-width: 1133px) {
-    font-size: 2rem;
-  }
-  @media (max-height: 770px) {
-    font-size: 1.5rem;
-  }
-  @media (max-height: 698px) {
-    font-size: 2rem;
-  }
-`;
-
 export const ParagraphP = styled.p<TextParagraphProps>`
   font-size: ${({ fontSize }) => fontSize};
   font-weight: ${({ fontWeight }) => fontWeight};

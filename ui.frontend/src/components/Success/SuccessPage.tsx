@@ -14,17 +14,18 @@ import BgSuccessImage from "../../assets/uol-ball-transparent.png";
 import IconSuccess from "../../assets/compassuol-logo-success.png";
 import { useHistory, useLocation } from "react-router-dom";
 import { isAuthoring } from "../../utils/isAuthoring";
-interface SuccessPageProps {
+
+export interface SuccessPageProps {
   successLogo?: { src: string };
   successImage?: { src: string };
   successColorTitleMultifield?: string;
   successTexts?: MultifieldTexts[];
 }
-interface MultifieldTexts {
+export interface MultifieldTexts {
   successTitleMultifield: string;
   successColorTitleMultifield: string;
   successDescriptionMultifield: string;
-  checkboxMultifield: boolean;
+  checkboxMultifield?: boolean;
 }
 interface LocationProps {
   state: { isLoggedIn: boolean };

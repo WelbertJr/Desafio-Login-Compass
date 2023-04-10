@@ -15,7 +15,6 @@ function Weather() {
   const [temp, setTemp] = useState("");
   const [weather, setWeather] = useState(false);
   const APIkey = `7e9baf9d3c42b588e4f66011a123a6fb`;
-  //const APIkey = `14bbcc78d3544fbbba4038ab99223088`;
 
   useEffect(() => {
     let isMounted = true;

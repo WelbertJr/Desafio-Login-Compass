@@ -22,7 +22,7 @@ import { BsFillShareFill } from "react-icons/bs";
 interface ButtonProps {
   text?: string;
   className?: string;
-  type: any;
+  type: "submit" | "button" | "reset";
   onClick?: () => void;
   counter?: number;
   bgColorLogin?: string;

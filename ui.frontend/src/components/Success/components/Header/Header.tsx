@@ -5,7 +5,7 @@ import { HeaderBody, HeaderImage, HeaderBodyWeather } from "./HeaderStyled";
 import Clock from "../Clock/Clock";
 
 interface HeaderProps {
-  logo: any;
+  logo?: string;
 }
 export const Header: FunctionComponent<HeaderProps> = ({ logo }) => {
   return (

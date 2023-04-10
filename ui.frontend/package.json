@@ -7,7 +7,9 @@
     "build": "react-scripts build && clientlib --verbose",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "sync": "aemsync -d -w ../ui.apps/src/main/content"
+    "sync": "aemsync -d -w ../ui.apps/src/main/content",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
     "@adobe/aem-core-components-react-base": "^1.1.8",
@@ -39,6 +41,16 @@
     "@types/styled-components": "^5.1.26",
     "@types/jest": "^27.5.1",
     "aem-clientlib-generator": "^1.5.0",
+    "@storybook/addon-actions": "^6.5.13",
+    "@storybook/addon-essentials": "^6.5.13",
+    "@storybook/addon-interactions": "^6.5.13",
+    "@storybook/addon-links": "^6.5.13",
+    "@storybook/builder-webpack4": "^6.5.13",
+    "@storybook/manager-webpack4": "^6.5.13",
+    "@storybook/node-logger": "^6.5.13",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.5.13",
+    "@storybook/testing-library": "^0.0.13",
     "aemsync": "^4.0.0",
     "ajv": "^6.10.0",
     "babel-plugin-universal-import": "^4.0.0",
